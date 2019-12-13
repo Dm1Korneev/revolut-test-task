@@ -1,0 +1,14 @@
+{
+  "env": { 
+    "node": true,
+    "browser": true,
+    "jest": true,
+    "jest/globals": true
+  },
+  "extends": ["plugin:jest/recommended"],
+  "plugins": ["jest"],
+  "rules": {
+    "global-require": "off",
+    "react/jsx-props-no-spreading": "off"
+  }
+}
