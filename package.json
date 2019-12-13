@@ -17,6 +17,11 @@
     "reselect": "^4.0.0",
     "styled-components": "^4.4.1"
   },
+  "devDependencies": {
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-jest": "^23.1.1",
+    "eslint-plugin-react": "^7.17.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
