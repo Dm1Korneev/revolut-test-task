@@ -27,10 +27,15 @@ dd {
 }
 
 body {
-  min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+}
+
+html, body {
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  font-family: Roboto, -apple-system, "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
 }
 
 ul[class],
