@@ -1,10 +1,13 @@
 import React from 'react';
 
+import CurrencyConverter from 'Components/CurrencyConverter';
 import { Container } from './App.styled';
 
 function App() {
   return (
-    <Container />
+    <Container>
+      <CurrencyConverter />
+    </Container>
   );
 }
 
