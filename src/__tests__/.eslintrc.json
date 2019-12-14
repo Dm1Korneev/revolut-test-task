@@ -8,6 +8,6 @@
   "extends": ["plugin:jest/recommended"],
   "plugins": ["jest"],
   "rules": {
-    "global-require": "off",
+    "global-require": "off"
   }
 }
