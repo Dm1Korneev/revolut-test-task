@@ -1,3 +1,14 @@
+
+@font-face {
+  font-family: 'Futura New';
+  font-display: fallback;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Futura New'),
+    url('../fonts/FuturaNewBook.woff2') format('woff2');
+  unicode-range: U+000-5FF; /* Latin glyphs */ 
+}
+
 *,
 *::before,
 *::after {
