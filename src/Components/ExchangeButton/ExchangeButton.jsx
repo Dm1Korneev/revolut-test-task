@@ -1,19 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Button } from './ExchangeButton.styled';
+
 const propTypes = {
   exchange: PropTypes.func.isRequired,
+  isActive: PropTypes.bool.isRequired,
 };
 
 function CurrentRate(props) {
   const {
-    exchange,
+    exchange, isActive,
   } = props;
 
   return (
-    <button type="button" onClick={exchange}>
+    <Button type="button" onClick={exchange} disabled={!isActive}>
       Exchange
-    </button>
+    </Button>
   );
 }
 

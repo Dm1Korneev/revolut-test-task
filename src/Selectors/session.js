@@ -55,3 +55,8 @@ export const rateSelector = (state, currencyFrom, currencyTo) => createSelector(
   (ratesValues) => ratesValues[currencyTo] / ratesValues[currencyFrom]
   ,
 )(state);
+
+export const exchagesValuesIsSetSelector = (state) => createSelector(
+  [writeOffValueSelector, receiveValueSelector],
+  (writeOffValue, receiveValue) => !!writeOffValue && !!receiveValue,
+)(state);

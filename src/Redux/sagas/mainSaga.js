@@ -13,7 +13,7 @@ import {
   setWriteOffValue,
 } from 'Redux/actions';
 import {
-  CHANGE_RECEIVE_VALUE, CHANGE_WRITE_OFF_VALUE, EXCHANGE, GET_POCKETS, GET_RATES,
+  CHANGE_RECEIVE_VALUE, CHANGE_WRITE_OFF_VALUE, EXCHANGE, GET_POCKETS, GET_RATES, SET_POCKET_FROM, SET_POCKET_TO,
 } from 'Constants/actionNames';
 import { getFailureAction, getRequestAction, getSuccessAction } from 'Redux/shared';
 import {
@@ -43,11 +43,21 @@ function* getPockets() {
 
 function* changeWriteOffValue(action) {
   const writeOffValue = action.payload;
-  const currencyFrom = yield select(pocketFromCurrencySelector);
-  const currencyTo = yield select(pocketToCurrencySelector);
-  const rate = yield select(rateSelector, currencyFrom, currencyTo);
+  let receiveValue;
+  if (writeOffValue === null) {
+    receiveValue = null;
+  } else {
+    const pocketFromValue = yield select(pocketFromValueSelector);
+    if (pocketFromValue < writeOffValue) {
+      return;
+    }
 
-  const receiveValue = roundPlus(writeOffValue * rate);
+    const currencyFrom = yield select(pocketFromCurrencySelector);
+    const currencyTo = yield select(pocketToCurrencySelector);
+    const rate = yield select(rateSelector, currencyFrom, currencyTo);
+
+    receiveValue = roundPlus(writeOffValue * rate);
+  }
 
   yield all([
     put(setWriteOffValue(writeOffValue)),
@@ -57,11 +67,21 @@ function* changeWriteOffValue(action) {
 
 function* changeReceiveValue(action) {
   const receiveValue = action.payload;
-  const currencyFrom = yield select(pocketFromCurrencySelector);
-  const currencyTo = yield select(pocketToCurrencySelector);
-  const rate = yield select(rateSelector, currencyTo, currencyFrom);
+  let writeOffValue;
+  if (receiveValue === null) {
+    writeOffValue = null;
+  } else {
+    const currencyFrom = yield select(pocketFromCurrencySelector);
+    const currencyTo = yield select(pocketToCurrencySelector);
+    const rate = yield select(rateSelector, currencyTo, currencyFrom);
 
-  const writeOffValue = roundPlus(receiveValue * rate);
+    writeOffValue = roundPlus(receiveValue * rate);
+
+    const pocketFromValue = yield select(pocketFromValueSelector);
+    if (pocketFromValue < writeOffValue) {
+      return;
+    }
+  }
 
   yield all([
     put(setWriteOffValue(writeOffValue)),
@@ -88,7 +108,7 @@ function* exchange() {
   ]);
 }
 
-function* exchangeSuccess() {
+function* dropExchangeValuesSaga() {
   yield put(dropExchangeValues());
 }
 
@@ -99,6 +119,8 @@ export default function* mainSaga() {
     yield takeEvery(CHANGE_WRITE_OFF_VALUE, changeWriteOffValue),
     yield takeEvery(CHANGE_RECEIVE_VALUE, changeReceiveValue),
     yield takeEvery(getRequestAction(EXCHANGE).type, exchange),
-    yield takeEvery(getSuccessAction(EXCHANGE).type, exchangeSuccess),
+    yield takeEvery(getSuccessAction(EXCHANGE).type, dropExchangeValuesSaga),
+    yield takeEvery(SET_POCKET_FROM, dropExchangeValuesSaga),
+    yield takeEvery(SET_POCKET_TO, dropExchangeValuesSaga),
   ]);
 }

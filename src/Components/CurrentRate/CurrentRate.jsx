@@ -16,7 +16,10 @@ function CurrentRate(props) {
 
   return (
     <span>
-      {`${getCurrencySymbol(currencyFrom)}1 = ${getCurrencySymbol(currencyTo)}${currentRate.toFixed(4)}`}
+      <small>{getCurrencySymbol(currencyFrom)}</small>
+      {'1 = '}
+      <small>{getCurrencySymbol(currencyTo)}</small>
+      {currentRate.toFixed(4)}
     </span>
   );
 }

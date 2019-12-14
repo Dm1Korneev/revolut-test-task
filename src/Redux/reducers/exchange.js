@@ -8,8 +8,8 @@ import {
 const defaultStore = {
   pocketFrom: CURRENCIES[0],
   pocketTo: CURRENCIES[1],
-  writeOffValue: 0,
-  receiveValue: 0,
+  writeOffValue: null,
+  receiveValue: null,
 };
 
 export default handleActions(
@@ -18,7 +18,7 @@ export default handleActions(
     [SET_POCKET_TO]: (state, action) => ({ ...state, pocketTo: action.payload }),
     [SET_WRITE_OFF_VALUE]: (state, action) => ({ ...state, writeOffValue: action.payload }),
     [SET_RECEIVE_VALUE]: (state, action) => ({ ...state, receiveValue: action.payload }),
-    [DROP_EXCHANGE_VALUES]: (state) => ({ ...state, writeOffValue: 0, receiveValue: 0 }),
+    [DROP_EXCHANGE_VALUES]: (state) => ({ ...state, writeOffValue: null, receiveValue: null }),
   },
   defaultStore,
 );

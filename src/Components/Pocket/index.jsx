@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { floorPlus, getCurrencySymbol } from 'Helpers';
-
-import { Container } from './Pocket.styled';
+import PocketValue from './PocketValue';
+import ValueInput from './ValueInput';
+import { Container, InfoLine, InputsLine } from './Pocket.styled';
 
 const defaultProps = {
-  value: 0,
+  value: null,
   valueHave: 0,
   cildren: null,
   valuePrefix: '',
@@ -28,27 +28,18 @@ function Pocket(props) {
     currency, value, valueHave, currencies, setPocketCurrency, cildren, changeValue, valuePrefix,
   } = props;
 
-  const valueChangeHandler = (event) => {
-    let parseValue = Number(event.target.value);
-    if (Number.isNaN(parseValue)) {
-      return;
-    }
-    parseValue = parseValue < 0 ? -parseValue : parseValue;
-    parseValue = floorPlus(parseValue);
-    changeValue(parseValue);
-  };
-
-  const valuePrefixString = value === 0 ? '' : valuePrefix;
-
   return (
     <Container>
-      <select value={currency} onChange={(event) => setPocketCurrency(event.target.value)}>
-        {currencies.map((element) => <option key={element} value={element}>{element}</option>)}
-      </select>
-      {valuePrefixString}
-      <input type="number" value={value} step="1" onChange={valueChangeHandler} />
-      <span>{`You have ${getCurrencySymbol(currency)}${valueHave.toFixed(2)}`}</span>
-      {cildren}
+      <InputsLine>
+        <select value={currency} onChange={(event) => setPocketCurrency(event.target.value)}>
+          {currencies.map((element) => <option key={element} value={element}>{element}</option>)}
+        </select>
+        <ValueInput value={value} valuePrefix={valuePrefix} changeValue={changeValue} />
+      </InputsLine>
+      <InfoLine>
+        <PocketValue value={valueHave} currency={currency} />
+        {cildren}
+      </InfoLine>
     </Container>
   );
 }
