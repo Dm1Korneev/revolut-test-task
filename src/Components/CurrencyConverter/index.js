@@ -4,6 +4,7 @@ import { getPockets, getRates } from 'Redux/actions';
 import CurrencyConverter from './CurrencyConverter';
 
 const mapStateToProps = () => ({
+
 });
 
 const mapDispatchToProps = {

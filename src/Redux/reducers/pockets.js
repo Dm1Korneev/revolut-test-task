@@ -6,7 +6,7 @@ const defaultStore = {};
 
 export default handleActions(
   {
-    [SET_POCKETS]: (state, action) => action.payload.pockets,
+    [SET_POCKETS]: (state, action) => ({ ...state, ...action.payload.pockets }),
   },
   defaultStore,
 );

@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { RATES_RELOAD_PERIOD } from 'Constants';
-import { CurrencyFrom, CurrencyTo, Title } from './CurrencyConverter.styled';
+
+import PocketFrom from 'Components/PocketFrom';
+import PocketTo from 'Components/PocketTo';
+import CurrentRate from 'Components/CurrentRate';
+import ExchangeButton from 'Components/ExchangeButton';
+
+import { Title } from './CurrencyConverter.styled';
 
 const propTypes = {
   getPockets: PropTypes.func.isRequired,
@@ -34,8 +40,10 @@ class CurrencyConverter extends Component {
     return (
       <>
         <Title>Currency exchange</Title>
-        <CurrencyFrom />
-        <CurrencyTo />
+        <CurrentRate />
+        <ExchangeButton />
+        <PocketFrom />
+        <PocketTo />
       </>
     );
   }
