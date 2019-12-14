@@ -23,6 +23,7 @@
     "max-len": ["error", 140],
     "sort-imports": ["error", {"ignoreDeclarationSort": true}],
     "import/prefer-default-export": "off",
-    "no-underscore-dangle": ["error", { "allow": ["_id"]}]
+    "no-underscore-dangle": ["error", { "allow": ["_id"]}],
+    "react/jsx-props-no-spreading": "off"
   }
 }
