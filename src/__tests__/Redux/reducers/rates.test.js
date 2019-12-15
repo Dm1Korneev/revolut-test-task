@@ -22,7 +22,6 @@ describe('rates reducer', () => {
       base: 'USD',
       rates: {
         USD: 1,
-        GBP: 0.750469,
         EUR: 0.89924,
         AUD: 1.453291,
         AWG: 1.8,
@@ -36,7 +35,6 @@ describe('rates reducer', () => {
       base: 'USD',
       ratesValues: {
         USD: 1,
-        GBP: 0.750469,
         EUR: 0.89924,
       },
       timestamp: 1576404028,
