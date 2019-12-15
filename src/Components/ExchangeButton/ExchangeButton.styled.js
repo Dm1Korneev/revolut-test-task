@@ -7,7 +7,6 @@ export const Button = styled.button`
     width: fit-content;
     line-height: 1.5rem;
     font-size: 1rem;
-    font-weight: 500;
     color: white;
     background-color: rgb(235, 0, 141);
     padding: 1em 4.125rem;
