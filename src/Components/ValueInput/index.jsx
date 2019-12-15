@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { floorPlus } from 'Helpers';
 
+import { Input, PrefixContainer } from './ValueInput.styled';
+
 const defaultProps = {
   valuePrefix: '',
   value: 0,
@@ -12,11 +14,12 @@ const propTypes = {
   changeValue: PropTypes.func.isRequired,
   value: PropTypes.number,
   valuePrefix: PropTypes.string,
+  label: PropTypes.string.isRequired,
 };
 
 function ValueInput(props) {
   const {
-    changeValue, value, valuePrefix,
+    changeValue, value, valuePrefix, label,
   } = props;
 
   const valueChangeHandler = (event) => {
@@ -37,8 +40,8 @@ function ValueInput(props) {
 
   return (
     <div>
-      {valuePrefixString}
-      <input type="number" value={valueForInput} step="0.01" onChange={valueChangeHandler} />
+      <PrefixContainer>{valuePrefixString}</PrefixContainer>
+      <Input type="number" value={valueForInput} step="0.01" onChange={valueChangeHandler} aria-label={label} />
     </div>
   );
 }

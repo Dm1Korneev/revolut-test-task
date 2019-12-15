@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import CurrencySelect from 'Components/CurrencySelect';
+import ValueInput from 'Components/ValueInput';
 import PocketValue from './PocketValue';
-import ValueInput from './ValueInput';
 import { Container, InfoLine, InputsLine } from './Pocket.styled';
 
 const defaultProps = {
@@ -21,20 +22,31 @@ const propTypes = {
   changeValue: PropTypes.func.isRequired,
   cildren: PropTypes.element,
   valuePrefix: PropTypes.string,
+  inputValueLAbel: PropTypes.string.isRequired,
+  selectCurrencyLabel: PropTypes.string.isRequired,
 };
 
 function Pocket(props) {
   const {
-    currency, value, valueHave, currencies, setPocketCurrency, cildren, changeValue, valuePrefix,
+    currency, value, valueHave, currencies, setPocketCurrency,
+    cildren, changeValue, valuePrefix, selectCurrencyLabel, inputValueLAbel,
   } = props;
 
   return (
     <Container>
       <InputsLine>
-        <select value={currency} onChange={(event) => setPocketCurrency(event.target.value)}>
-          {currencies.map((element) => <option key={element} value={element}>{element}</option>)}
-        </select>
-        <ValueInput value={value} valuePrefix={valuePrefix} changeValue={changeValue} />
+        <CurrencySelect
+          currency={currency}
+          currencies={currencies}
+          setPocketCurrency={setPocketCurrency}
+          label={selectCurrencyLabel}
+        />
+        <ValueInput
+          value={value}
+          valuePrefix={valuePrefix}
+          changeValue={changeValue}
+          label={inputValueLAbel}
+        />
       </InputsLine>
       <InfoLine>
         <PocketValue value={valueHave} currency={currency} />

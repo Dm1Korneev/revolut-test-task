@@ -7,6 +7,8 @@ function PocketFrom(props) {
     <Pocket
       {...props}
       valuePrefix="-"
+      inputValueLAbel="Write off amount"
+      selectCurrencyLabel="Write off currency"
     />
   );
 }

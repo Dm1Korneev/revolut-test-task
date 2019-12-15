@@ -9,6 +9,8 @@ function PocketTo(props) {
       {...props}
       valuePrefix="+"
       cildren={<CurrentRate reverse />}
+      inputValueLAbel="Receive amount"
+      selectCurrencyLabel="Receive currency"
     />
   );
 }

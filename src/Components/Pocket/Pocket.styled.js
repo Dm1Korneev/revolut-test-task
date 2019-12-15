@@ -12,12 +12,14 @@ export const InputsLine = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    font-size: 2rem;
 `;
 
 export const InfoLine = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    color: rgba(0, 0, 0, 0.54);
+    color: rgba(0, 0, 0, 0.70);
     padding: 0.5rem 0;
 `;
