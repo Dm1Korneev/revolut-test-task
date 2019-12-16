@@ -80,4 +80,11 @@ describe('actions', () => {
     };
     expect(actions.exchange()).toStrictEqual(expectedAction);
   });
+
+  test('should create an action to change pockets', () => {
+    const expectedAction = {
+      type: actionNames.CHANGE_POCKETS,
+    };
+    expect(actions.changePockets()).toStrictEqual(expectedAction);
+  });
 });
