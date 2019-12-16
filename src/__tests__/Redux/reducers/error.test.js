@@ -14,7 +14,7 @@ describe('error reducer', () => {
   test('should not handle actions without REQUEST or FAILURE postfix', () => {
     expect(
       reducer({}, {
-        type: actionNames.ADD_CHATS,
+        type: actionNames.GET_RATES,
       }),
     ).toStrictEqual(
       {},
