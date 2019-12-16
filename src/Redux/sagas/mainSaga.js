@@ -90,22 +90,30 @@ function* changeReceiveValue(action) {
 }
 
 function* exchange() {
-  const writeOffValue = yield select(writeOffValueSelector);
-  const currencyFrom = yield select(pocketFromCurrencySelector);
-  const currencyTo = yield select(pocketToCurrencySelector);
-  const pocketFromValue = yield select(pocketFromValueSelector);
-  const pocketFToValue = yield select(pocketToValueSelector);
-  const rate = yield select(rateSelector, currencyFrom, currencyTo);
-  const receiveValue = roundPlus(writeOffValue * rate);
+  try {
+    const writeOffValue = yield select(writeOffValueSelector);
+    const currencyFrom = yield select(pocketFromCurrencySelector);
+    const currencyTo = yield select(pocketToCurrencySelector);
+    if (currencyFrom === currencyTo) {
+      throw new Error('Currencies from and to must be different');
+    }
 
-  const pockets = {
-    [currencyFrom]: pocketFromValue - writeOffValue,
-    [currencyTo]: pocketFToValue + receiveValue,
-  };
-  yield all([
-    put(setPockets({ pockets })),
-    put(getSuccessAction(EXCHANGE)),
-  ]);
+    const pocketFromValue = yield select(pocketFromValueSelector);
+    const pocketFToValue = yield select(pocketToValueSelector);
+    const rate = yield select(rateSelector, currencyFrom, currencyTo);
+    const receiveValue = roundPlus(writeOffValue * rate);
+
+    const pockets = {
+      [currencyFrom]: pocketFromValue - writeOffValue,
+      [currencyTo]: pocketFToValue + receiveValue,
+    };
+    yield all([
+      put(setPockets({ pockets })),
+      put(getSuccessAction(EXCHANGE)),
+    ]);
+  } catch (error) {
+    yield put(getFailureAction(EXCHANGE, { error }));
+  }
 }
 
 function* dropExchangeValuesSaga() {

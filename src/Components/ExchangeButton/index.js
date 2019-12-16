@@ -1,11 +1,11 @@
 import commonHoc from 'Components/commonHoc';
 import { exchange } from 'Redux/actions';
-import { exchagesValuesIsSetSelector } from 'Selectors/session';
+import { currenciesFromToSameSelector, exchagesValuesIsSetSelector } from 'Selectors/session';
 
 import ExchangeButton from './ExchangeButton';
 
 const mapStateToProps = (state) => ({
-  isActive: exchagesValuesIsSetSelector(state),
+  isActive: exchagesValuesIsSetSelector(state) && !currenciesFromToSameSelector(state),
 });
 
 const mapDispatchToProps = {

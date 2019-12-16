@@ -60,3 +60,9 @@ export const exchagesValuesIsSetSelector = (state) => createSelector(
   [writeOffValueSelector, receiveValueSelector],
   (writeOffValue, receiveValue) => !!writeOffValue && !!receiveValue,
 )(state);
+
+export const currenciesFromToSameSelector = (state) => createSelector(
+  [pocketFromCurrencySelector, pocketToCurrencySelector],
+  (currencyFrom, currencyTo) => currencyFrom === currencyTo,
+)(state);
+
