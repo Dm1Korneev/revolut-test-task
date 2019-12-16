@@ -13,7 +13,7 @@ import {
   setWriteOffValue,
 } from 'Redux/actions';
 import {
-  CHANGE_RECEIVE_VALUE, CHANGE_WRITE_OFF_VALUE, EXCHANGE, GET_POCKETS, GET_RATES, SET_POCKET_FROM, SET_POCKET_TO,
+  CHANGE_RECEIVE_VALUE, CHANGE_WRITE_OFF_VALUE, EXCHANGE, GET_POCKETS, GET_RATES, SET_POCKET_FROM, SET_POCKET_TO, CHANGE_POCKETS,
 } from 'Constants/actionNames';
 import { getFailureAction, getRequestAction, getSuccessAction } from 'Redux/shared';
 import {
@@ -130,5 +130,6 @@ export default function* mainSaga() {
     yield takeEvery(getSuccessAction(EXCHANGE).type, dropExchangeValuesSaga),
     yield takeEvery(SET_POCKET_FROM, dropExchangeValuesSaga),
     yield takeEvery(SET_POCKET_TO, dropExchangeValuesSaga),
+    yield takeEvery(CHANGE_POCKETS, dropExchangeValuesSaga),
   ]);
 }

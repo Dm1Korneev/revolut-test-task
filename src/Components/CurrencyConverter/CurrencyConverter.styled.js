@@ -40,6 +40,19 @@ export const CurrentRateContainer = styled.div`
     border: 1px solid rgba(0,0,0,0.12);
 `;
 
+export const ChangePocketsContainer = styled.div`
+    position: absolute;
+    left: 1rem;
+    bottom: -1rem;
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    border-radius: 1rem;
+    border: 1px solid rgba(0,0,0,0.12);
+`;
+
 export const Title = styled.h1`
   font-family: "Futura New", Futura, Avenir, sans-serif;
   font-weight: 400;

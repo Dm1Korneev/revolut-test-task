@@ -2,8 +2,8 @@ import { createAction } from 'redux-actions';
 
 import { getRequestAction } from 'Redux/shared';
 import {
-  CHANGE_RECEIVE_VALUE, CHANGE_WRITE_OFF_VALUE, DROP_EXCHANGE_VALUES, EXCHANGE, GET_POCKETS, GET_RATES,
-  SET_POCKETS, SET_POCKET_FROM, SET_POCKET_TO, SET_RATES, SET_RECEIVE_VALUE, SET_WRITE_OFF_VALUE,
+  CHANGE_POCKETS, CHANGE_RECEIVE_VALUE, CHANGE_WRITE_OFF_VALUE, DROP_EXCHANGE_VALUES, EXCHANGE, GET_POCKETS,
+  GET_RATES, SET_POCKETS, SET_POCKET_FROM, SET_POCKET_TO, SET_RATES, SET_RECEIVE_VALUE, SET_WRITE_OFF_VALUE,
 } from 'Constants/actionNames';
 
 export const getRates = () => getRequestAction(GET_RATES);
@@ -29,3 +29,5 @@ export const setReceiveValue = createAction(SET_RECEIVE_VALUE);
 export const dropExchangeValues = createAction(DROP_EXCHANGE_VALUES);
 
 export const exchange = () => getRequestAction(EXCHANGE);
+
+export const changePockets = createAction(CHANGE_POCKETS);

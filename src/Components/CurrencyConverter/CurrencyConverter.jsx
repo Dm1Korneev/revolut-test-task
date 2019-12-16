@@ -8,9 +8,10 @@ import PocketTo from 'Components/PocketTo';
 import CurrentRate from 'Components/CurrentRate';
 import ExchangeButton from 'Components/ExchangeButton';
 import Loader from 'Components/Loader';
+import ChangePocketsButton from 'Components/ChangePocketsButton';
 
 import {
-  BlockFrom, BlockTo, Container, CurrentRateContainer, Title,
+  BlockFrom, BlockTo, ChangePocketsContainer, Container, CurrentRateContainer, Title,
 } from './CurrencyConverter.styled';
 
 const propTypes = {
@@ -53,6 +54,9 @@ class CurrencyConverter extends Component {
               <CurrentRateContainer>
                 <CurrentRate />
               </CurrentRateContainer>
+              <ChangePocketsContainer>
+                <ChangePocketsButton />
+              </ChangePocketsContainer>
             </BlockFrom>
             <BlockTo>
               <PocketTo />

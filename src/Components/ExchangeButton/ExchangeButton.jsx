@@ -8,7 +8,7 @@ const propTypes = {
   isActive: PropTypes.bool.isRequired,
 };
 
-function CurrentRate(props) {
+function ExchangeButton(props) {
   const {
     exchange, isActive,
   } = props;
@@ -20,6 +20,6 @@ function CurrentRate(props) {
   );
 }
 
-CurrentRate.propTypes = propTypes;
+ExchangeButton.propTypes = propTypes;
 
-export default CurrentRate;
+export default ExchangeButton;
