@@ -1,11 +1,11 @@
 import commonHoc from 'Components/commonHoc';
 import { getPockets, getRates } from 'Redux/actions';
-import { getRatesLoadingSelector } from 'Selectors/loading';
+import { getRatesLoadedSelector } from 'Selectors/loaded';
 
 import CurrencyConverter from './CurrencyConverter';
 
 const mapStateToProps = (state) => ({
-  isBusy: getRatesLoadingSelector(state),
+  isBusy: !getRatesLoadedSelector(state),
 });
 
 const mapDispatchToProps = {
