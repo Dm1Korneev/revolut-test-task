@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurrentRate component renders the component 1`] = `
+<DocumentFragment>
+  <span>
+    <small>
+      $
+    </small>
+    1 = 
+    <small>
+      €
+    </small>
+    10.6578
+  </span>
+</DocumentFragment>
+`;
