@@ -1,8 +1,9 @@
 import commonHoc from 'Components/commonHoc';
 import { changeWriteOffValue, setPocketFrom } from 'Redux/actions';
 import {
-  currenciesSelector, pocketFromCurrencySelector, pocketFromValueSelector, writeOffValueSelector,
-} from 'Selectors/session';
+  pocketFromCurrencySelector, pocketFromValueSelector, writeOffValueSelector,
+} from 'Selectors/exchange';
+import { currenciesSelector } from 'Selectors/currencies';
 
 import PocketFrom from './PocketFrom';
 

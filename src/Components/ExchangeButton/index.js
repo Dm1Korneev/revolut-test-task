@@ -1,6 +1,6 @@
 import commonHoc from 'Components/commonHoc';
 import { exchange } from 'Redux/actions';
-import { currenciesFromToSameSelector, exchagesValuesIsSetSelector } from 'Selectors/session';
+import { currenciesFromToSameSelector, exchagesValuesIsSetSelector } from 'Selectors/exchange';
 
 import ExchangeButton from './ExchangeButton';
 

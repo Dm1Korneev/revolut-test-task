@@ -13,12 +13,15 @@ import {
   setWriteOffValue,
 } from 'Redux/actions';
 import {
-  CHANGE_RECEIVE_VALUE, CHANGE_WRITE_OFF_VALUE, EXCHANGE, GET_POCKETS, GET_RATES, SET_POCKET_FROM, SET_POCKET_TO, CHANGE_POCKETS,
+  CHANGE_POCKETS, CHANGE_RECEIVE_VALUE, CHANGE_WRITE_OFF_VALUE,
+  EXCHANGE, GET_POCKETS, GET_RATES, SET_POCKET_FROM, SET_POCKET_TO,
 } from 'Constants/actionNames';
 import { getFailureAction, getRequestAction, getSuccessAction } from 'Redux/shared';
 import {
-  pocketFromCurrencySelector, pocketFromValueSelector, pocketToCurrencySelector, pocketToValueSelector, rateSelector, writeOffValueSelector,
-} from 'Selectors/session';
+  pocketFromCurrencySelector, pocketFromValueSelector, pocketToCurrencySelector,
+  pocketToValueSelector, writeOffValueSelector,
+} from 'Selectors/exchange';
+import { rateSelector } from 'Selectors/rates';
 import { roundPlus } from 'Helpers';
 
 function* getRates() {

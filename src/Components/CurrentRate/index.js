@@ -1,5 +1,6 @@
 import commonHoc from 'Components/commonHoc';
-import { pocketFromCurrencySelector, pocketToCurrencySelector, rateSelector } from 'Selectors/session';
+import { pocketFromCurrencySelector, pocketToCurrencySelector } from 'Selectors/exchange';
+import { rateSelector } from 'Selectors/rates';
 
 import CurrentRate from './CurrentRate';
 
