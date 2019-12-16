@@ -5,13 +5,13 @@ export const Input = styled.input`
     -webkit-appearance: none;
     margin: 0;
     background-color: transparent;
-    width: 10rem;
-    padding: 1rem;
+    width: 9rem;
+    padding: 0.5rem;
 
     border-radius: 4px;
     border: 1px solid rgba(0, 0, 0, 0.23);
 `;
 
 export const PrefixContainer = styled.span`
-    padding: 1rem;
+    padding: 0.5rem;
 `;

@@ -5,7 +5,7 @@ export const Container = styled.div`
     display: flex;
     width: 100%;
     flex-direction: column;
-    padding: 1rem;
+    padding: 1rem 0;
 `;
 
 export const InputsLine = styled.div`
