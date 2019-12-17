@@ -5,6 +5,13 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 
-global.mockComponent = (componentName) => (props) => (
-  <div originalcomponent={componentName} {...props}>{props.children}</div>
-);
+global.mockComponent = (componentName) => (props) => {
+  const mockProps = {};
+  Object.keys(props)
+    .filter((key) => key !== 'children')
+    .forEach((key) => {
+      const value = JSON.stringify(props[key]);
+      mockProps[`test-prop-${key.toLowerCase()}`] = value;
+    });
+  return (<div originalcomponent={componentName} {...mockProps}>{props.children}</div>);
+};
