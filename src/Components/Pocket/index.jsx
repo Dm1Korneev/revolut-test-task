@@ -9,7 +9,7 @@ import { Container, InfoLine, InputsLine } from './Pocket.styled';
 const defaultProps = {
   value: null,
   valueHave: 0,
-  cildren: null,
+  children: null,
   valuePrefix: '',
 };
 
@@ -20,16 +20,16 @@ const propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
   setPocketCurrency: PropTypes.func.isRequired,
   changeValue: PropTypes.func.isRequired,
-  cildren: PropTypes.element,
+  children: PropTypes.element,
   valuePrefix: PropTypes.string,
-  inputValueLAbel: PropTypes.string.isRequired,
+  inputValueLabel: PropTypes.string.isRequired,
   selectCurrencyLabel: PropTypes.string.isRequired,
 };
 
 function Pocket(props) {
   const {
     currency, value, valueHave, currencies, setPocketCurrency,
-    cildren, changeValue, valuePrefix, selectCurrencyLabel, inputValueLAbel,
+    children, changeValue, valuePrefix, selectCurrencyLabel, inputValueLabel,
   } = props;
 
   return (
@@ -45,12 +45,12 @@ function Pocket(props) {
           value={value}
           valuePrefix={valuePrefix}
           changeValue={changeValue}
-          label={inputValueLAbel}
+          label={inputValueLabel}
         />
       </InputsLine>
       <InfoLine>
         <PocketValue value={valueHave} currency={currency} />
-        {cildren}
+        {children}
       </InfoLine>
     </Container>
   );
