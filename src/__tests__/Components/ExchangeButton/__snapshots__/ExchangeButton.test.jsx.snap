@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExchangeButton component renders the component isActive = false 1`] = `
+<DocumentFragment>
+  <button
+    class="sc-bdVaJa zMcje"
+    disabled=""
+    type="button"
+  >
+    Exchange
+  </button>
+</DocumentFragment>
+`;
+
+exports[`ExchangeButton component renders the component isActive = true 1`] = `
+<DocumentFragment>
+  <button
+    class="sc-bdVaJa zMcje"
+    type="button"
+  >
+    Exchange
+  </button>
+</DocumentFragment>
+`;
