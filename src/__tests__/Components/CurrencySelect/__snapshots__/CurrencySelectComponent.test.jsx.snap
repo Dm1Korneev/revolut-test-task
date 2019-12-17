@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurrencySelect component renders the component 1`] = `
+<DocumentFragment>
+  <select
+    aria-label="test label"
+    class="sc-bdVaJa ffWVso"
+  >
+    <option
+      value="USD"
+    >
+      USD
+    </option>
+    <option
+      value="EUR"
+    >
+      EUR
+    </option>
+    <option
+      value="GBP"
+    >
+      GBP
+    </option>
+  </select>
+</DocumentFragment>
+`;
