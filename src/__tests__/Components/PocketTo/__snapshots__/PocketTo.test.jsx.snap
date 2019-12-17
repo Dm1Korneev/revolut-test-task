@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PocketTo component renders the component 1`] = `
+<DocumentFragment>
+  <div
+    originalcomponent="Pocket"
+    test-prop-inputvaluelabel="\\"Receive amount\\""
+    test-prop-selectcurrencylabel="\\"Receive currency\\""
+    test-prop-test="\\"test\\""
+    test-prop-valueprefix="\\"+\\""
+  >
+    <div
+      originalcomponent="CurrentRate"
+      test-prop-reverse="true"
+    />
+  </div>
+</DocumentFragment>
+`;
