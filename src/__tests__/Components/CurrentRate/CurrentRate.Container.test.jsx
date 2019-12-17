@@ -3,11 +3,11 @@ import Container from 'Components/CurrentRate';
 jest.mock('Components/CurrentRate/CurrentRate', () => 'CurrentRateComponent');
 jest.mock('Components/commonHoc', () => (...args) => args);
 jest.mock('Selectors/exchange', () => ({
-  pocketFromCurrencySelector: () => 'pocketFromCurrencySelectorResult',
-  pocketToCurrencySelector: () => 'pocketToCurrencySelectorResult',
+  pocketFromCurrencySelector: () => 'pocketFromCurrencySelector',
+  pocketToCurrencySelector: () => 'pocketToCurrencySelector',
 }));
 jest.mock('Selectors/rates', () => ({
-  rateSelector: () => 'rateSelectorResult',
+  rateSelector: () => 'rateSelector',
 }));
 
 describe('CurrentRate container', () => {
@@ -17,9 +17,9 @@ describe('CurrentRate container', () => {
     const [componentName, { mapStateToProps }] = Container;
     expect(componentName).toBe('CurrentRateComponent');
     expect(mapStateToProps({}, props)).toStrictEqual({
-      currencyFrom: 'pocketFromCurrencySelectorResult',
-      currencyTo: 'pocketToCurrencySelectorResult',
-      currentRate: 'rateSelectorResult',
+      currencyFrom: 'pocketFromCurrencySelector',
+      currencyTo: 'pocketToCurrencySelector',
+      currentRate: 'rateSelector',
     });
   });
 
@@ -29,9 +29,9 @@ describe('CurrentRate container', () => {
     const [componentName, { mapStateToProps }] = Container;
     expect(componentName).toBe('CurrentRateComponent');
     expect(mapStateToProps({}, props)).toStrictEqual({
-      currencyFrom: 'pocketToCurrencySelectorResult',
-      currencyTo: 'pocketFromCurrencySelectorResult',
-      currentRate: 'rateSelectorResult',
+      currencyFrom: 'pocketToCurrencySelector',
+      currencyTo: 'pocketFromCurrencySelector',
+      currentRate: 'rateSelector',
     });
   });
 });
