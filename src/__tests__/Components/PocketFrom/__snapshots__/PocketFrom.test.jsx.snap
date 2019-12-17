@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PocketFrom component renders the component 1`] = `
+<DocumentFragment>
+  <div
+    originalcomponent="Pocket"
+    test-prop-inputvaluelabel="\\"Write off amount\\""
+    test-prop-selectcurrencylabel="\\"Write off currency\\""
+    test-prop-test="\\"test\\""
+    test-prop-valueprefix="\\"-\\""
+  />
+</DocumentFragment>
+`;
