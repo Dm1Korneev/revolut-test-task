@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PocketValue component renders the component 1`] = `
+<DocumentFragment>
+  <span>
+    You have 
+    <small>
+      £
+    </small>
+    0.09
+  </span>
+</DocumentFragment>
+`;
