@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurrencyConverter component renders the component 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdVaJa dBnMMB"
+  >
+    <h1
+      class="sc-bZQynM cvwvqF"
+    >
+      Currency exchange
+    </h1>
+    <div
+      class="sc-bwzfXH sc-htpNat dtmtwx"
+    >
+      <div
+        originalcomponent="PocketFrom"
+      />
+      <div
+        class="sc-ifAKCX gHNnsm"
+      >
+        <div
+          originalcomponent="CurrentRate"
+        />
+      </div>
+      <div
+        class="sc-EHOje btOkpo"
+      >
+        <div
+          originalcomponent="ChangePocketsButton"
+        />
+      </div>
+    </div>
+    <div
+      class="sc-bwzfXH sc-bxivhb eMThae"
+    >
+      <div
+        originalcomponent="PocketTo"
+      />
+      <div
+        originalcomponent="ExchangeButton"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CurrencyConverter component show loader when isBusy = true 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdVaJa dBnMMB"
+  >
+    <h1
+      class="sc-bZQynM cvwvqF"
+    >
+      Currency exchange
+    </h1>
+    <div
+      originalcomponent="Loader"
+    />
+  </div>
+</DocumentFragment>
+`;
