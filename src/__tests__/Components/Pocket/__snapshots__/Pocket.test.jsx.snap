@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pocket component renders the component 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdVaJa iqQZSj"
+  >
+    <div
+      class="sc-bwzfXH eXyeCP"
+    >
+      <div
+        originalcomponent="CurrencySelect"
+        test-prop-currencies="[\\"USD\\",\\"EUR\\",\\"GBP\\"]"
+        test-prop-currency="\\"USD\\""
+        test-prop-label="\\"Test label select\\""
+      />
+      <div
+        originalcomponent="ValueInput"
+        test-prop-label="\\"Test label input\\""
+        test-prop-value="100.87"
+        test-prop-valueprefix="\\"-\\""
+      />
+    </div>
+    <div
+      class="sc-htpNat hKiEjg"
+    >
+      <div
+        originalcomponent="PocketValue"
+        test-prop-currency="\\"USD\\""
+        test-prop-value="2000.9"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
