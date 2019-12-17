@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChangePocketsButton component renders the component 1`] = `
+<DocumentFragment>
+  <button
+    aria-label="Change pockets"
+    class="sc-bdVaJa bXZQJU"
+    type="button"
+  />
+</DocumentFragment>
+`;
