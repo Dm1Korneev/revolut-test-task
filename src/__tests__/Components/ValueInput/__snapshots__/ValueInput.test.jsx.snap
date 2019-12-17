@@ -1,5 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ValueInput component renders component with 0 value 1`] = `
+<DocumentFragment>
+  <div>
+    <span
+      class="sc-bwzfXH hnmbcI"
+    />
+    <input
+      aria-label="Test label"
+      class="sc-bdVaJa goBKDi"
+      step="0.01"
+      type="number"
+      value="0"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ValueInput component renders component with empty value 1`] = `
+<DocumentFragment>
+  <div>
+    <span
+      class="sc-bwzfXH hnmbcI"
+    >
+      +
+    </span>
+    <input
+      aria-label="Test label"
+      class="sc-bdVaJa goBKDi"
+      step="0.01"
+      type="number"
+      value=""
+    />
+  </div>
+</DocumentFragment>
+`;
+
 exports[`ValueInput component renders the component 1`] = `
 <DocumentFragment>
   <div>
