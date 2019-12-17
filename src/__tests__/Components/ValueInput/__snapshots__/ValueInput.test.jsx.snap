@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ValueInput component renders the component 1`] = `
+<DocumentFragment>
+  <div>
+    <span
+      class="sc-bwzfXH hnmbcI"
+    >
+      +
+    </span>
+    <input
+      aria-label="Test label"
+      class="sc-bdVaJa goBKDi"
+      step="0.01"
+      type="number"
+      value="100.54"
+    />
+  </div>
+</DocumentFragment>
+`;
