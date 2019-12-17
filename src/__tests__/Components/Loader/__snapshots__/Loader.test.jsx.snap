@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader component renders the component 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdVaJa iFHshV"
+  >
+    <div
+      class="sc-bwzfXH bsnhCc"
+    >
+      <div />
+      <div />
+      <div />
+      <div />
+    </div>
+  </div>
+</DocumentFragment>
+`;
