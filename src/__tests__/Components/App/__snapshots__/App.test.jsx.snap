@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component renders the component 1`] = `
+<DocumentFragment>
+  <main
+    class="sc-bdVaJa kWexiN"
+  >
+    <div
+      originalcomponent="CurrencyConverter"
+    />
+  </main>
+</DocumentFragment>
+`;
