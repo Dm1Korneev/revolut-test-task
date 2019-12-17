@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import CurrentRate from 'Components/CurrentRate/CurrentRate';
+import Component from 'Components/CurrentRate/CurrentRate';
 
 describe('CurrentRate component', () => {
   test('renders the component', () => {
@@ -10,7 +10,7 @@ describe('CurrentRate component', () => {
       currencyTo: 'EUR',
     };
 
-    const { asFragment } = render(<CurrentRate {...props} />);
+    const { asFragment } = render(<Component {...props} />);
     expect(asFragment()).toMatchSnapshot();
   });
 });
