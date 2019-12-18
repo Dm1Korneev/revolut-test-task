@@ -16,6 +16,8 @@
     "@types/node": "^12.12.21",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
+    "@types/react-redux": "^7.1.5",
+    "@types/styled-components": "^4.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -42,11 +44,8 @@
     "test-coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "lint": "eslint src/ --ext .jsx,.js --color",
-    "lint-fix": "eslint src/ --ext .jsx,.js --color --fix"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "lint": "eslint src/ --ext .jsx,.js,.tsx,.ts --color",
+    "lint-fix": "eslint src/ --ext .jsx,.js,.tsx,.ts --color --fix"
   },
   "browserslist": {
     "production": [
