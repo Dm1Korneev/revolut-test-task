@@ -1,7 +1,8 @@
+import { Component, FC } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-const commonHoc = (Component, params = {}) => {
+const commonHoc = (component: FC, params = {}): Component => {
   const {
     mapStateToProps = null,
     mapDispatchToProps = null,
@@ -9,13 +10,13 @@ const commonHoc = (Component, params = {}) => {
 
   const isConnected = mapStateToProps || mapDispatchToProps;
 
-  let ConnectedComponent = Component;
+  let ConnectedComponent = component;
 
   if (isConnected) {
     const dispatchMapper = !mapDispatchToProps ? null
       : (dispatch) => bindActionCreators(mapDispatchToProps, dispatch);
 
-    ConnectedComponent = connect(mapStateToProps, dispatchMapper)(Component);
+    ConnectedComponent = connect(mapStateToProps, dispatchMapper)(component);
   }
 
   return ConnectedComponent;

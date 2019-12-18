@@ -1,13 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 
 import { Button } from './ChangePocketsButton.styled';
 
-const propTypes = {
-  changePockets: PropTypes.func.isRequired,
-};
+type Props = {
+  changePockets: () => void;
+}
 
-function ChangePocketsButton(props) {
+const ChangePocketsButton: FC<Props> = (props: Props): JSX.Element => {
   const {
     changePockets,
   } = props;
@@ -15,8 +14,6 @@ function ChangePocketsButton(props) {
   return (
     <Button type="button" onClick={changePockets} aria-label="Change pockets" />
   );
-}
-
-ChangePocketsButton.propTypes = propTypes;
+};
 
 export default ChangePocketsButton;

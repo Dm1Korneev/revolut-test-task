@@ -1,15 +1,19 @@
 import { CURRENCIES_RATE_API_ID, CURRENCIES_RATE_API_URL } from 'Constants';
 import { pockets } from './dummyData';
 
-function parseJSON(response) {
+type parseJSONInterface = {
+  response: Response;
+  result: Object;
+}
+
+function parseJSON(response: Response): Promise<parseJSONInterface> {
   return new Promise((resolve) => response.json().then((result) => resolve({
-    status: response.status,
-    ok: response.ok,
+    response,
     result,
   })));
 }
 
-function apiCall(URI, optionsParams) {
+function apiCall(URI: RequestInfo, optionsParams: RequestInit) {
   const options = {
     ...optionsParams,
     headers: {
@@ -21,11 +25,11 @@ function apiCall(URI, optionsParams) {
   return new Promise((resolve, reject) => {
     fetch(URI, options)
       .then(parseJSON)
-      .then((response) => {
+      .then(({ response, result }: parseJSONInterface) => {
         if (response.ok) {
-          return resolve(response.result);
+          return resolve(result);
         }
-        return reject(response.result);
+        return reject(result);
       });
   });
 }
@@ -36,7 +40,7 @@ export const getRates = () => {
   const uri = `${CURRENCIES_RATE_API_URL}/latest.json?app_id=${CURRENCIES_RATE_API_ID}`;
   const options = {
     method: 'GET',
-    mode: 'cors',
+    mode: 'cors' as RequestMode,
   };
 
   return apiCall(uri, options);

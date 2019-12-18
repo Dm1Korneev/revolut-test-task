@@ -1,7 +1,11 @@
 
 import styled from 'styled-components';
 
-export const Button = styled.button`
+type Props = {
+    onClick: () => void;
+  }
+
+export const Button = styled.button<Props>`
     display: block;
     cursor: pointer;
     width: 100%;

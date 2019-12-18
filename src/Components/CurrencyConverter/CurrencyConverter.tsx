@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import { RATES_RELOAD_PERIOD } from 'Constants';
 
@@ -14,20 +13,22 @@ import {
   BlockFrom, BlockTo, ChangePocketsContainer, Container, CurrentRateContainer, Title,
 } from './CurrencyConverter.styled';
 
-const propTypes = {
-  getPockets: PropTypes.func.isRequired,
-  getRates: PropTypes.func.isRequired,
-  isBusy: PropTypes.bool.isRequired,
-};
+type Props = {
+  getRates: Function;
+  getPockets: Function;
+  isBusy: boolean;
+}
 
-class CurrencyConverter extends Component {
+class CurrencyConverter extends Component<Props> {
+  interval: number;
+
   constructor(props) {
     super(props);
 
     this.interval = undefined;
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     const { getRates, getPockets } = this.props;
 
     getPockets();
@@ -35,13 +36,13 @@ class CurrencyConverter extends Component {
     this.interval = setInterval(getRates, RATES_RELOAD_PERIOD);
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     if (this.interval) {
       clearInterval(this.interval);
     }
   }
 
-  render() {
+  render(): JSX.Element {
     const { isBusy } = this.props;
 
     return (
@@ -68,7 +69,5 @@ class CurrencyConverter extends Component {
     );
   }
 }
-
-CurrencyConverter.propTypes = propTypes;
 
 export default CurrencyConverter;
