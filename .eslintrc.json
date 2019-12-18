@@ -3,15 +3,20 @@
     "browser": true,
     "jest": true
   },
-  "extends": "airbnb",
-  "parser": "babel-eslint",
+  "extends": [
+    "airbnb",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
   "plugins": [
-    "react"
+    "react", "@typescript-eslint"
   ],
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": ["src"]
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
   },
@@ -23,7 +28,15 @@
     "max-len": ["error", 140],
     "sort-imports": ["error", {"ignoreDeclarationSort": true}],
     "import/prefer-default-export": "off",
-    "no-underscore-dangle": ["error", { "allow": ["_id"]}],
-    "react/jsx-props-no-spreading": "off"
-  }
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx", ".ts", ".tsx"] }]
+  },
+  "overrides": [
+    {
+        "files": ["**/*.tsx"],
+        "rules": {
+            "react/prop-types": "off"
+        }
+    }
+  ]
 }
