@@ -5,7 +5,7 @@ describe('app Entry Point - /src/index.jsx', () => {
     document.body.innerHTML = '<div id="root"></div>';
   });
 
-  it('renders app wihtout error', () => {
+  it('should render app without error', () => {
     expect(() => require('index.jsx')).not.toThrow();
   });
 });
