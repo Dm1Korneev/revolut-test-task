@@ -4,7 +4,7 @@ import { getFailureAction, getSuccessAction } from 'Redux/shared';
 import { setRates } from 'Redux/actions';
 import { GET_RATES } from 'Constants/actionNames';
 
-export default function* getRatesSaga() {
+export default function* getRatesSaga(): Iterator<any> {
   try {
     const rates = yield call(getRatesApi);
     yield put(getSuccessAction(GET_RATES, { rates }));

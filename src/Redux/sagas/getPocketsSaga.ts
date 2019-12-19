@@ -4,7 +4,7 @@ import { getFailureAction, getSuccessAction } from 'Redux/shared';
 import { setPockets } from 'Redux/actions';
 import { GET_POCKETS } from 'Constants/actionNames';
 
-export default function* getPocketsSaga() {
+export default function* getPocketsSaga(): Iterator<any> {
   try {
     const pockets = yield call(getPocketsApi);
     yield put(setPockets({ pockets }));

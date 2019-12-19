@@ -1,4 +1,8 @@
-export default function loadingReducer(state = {}, action) {
+import { Action } from 'redux-actions';
+
+export type ErrorState = {[id: string]: string}
+
+export default function loadingReducer(state = {}, action: Action<any>): ErrorState {
   const { type, payload } = action;
   const matches = /(.*)_(REQUEST|FAILURE)/.exec(type);
 

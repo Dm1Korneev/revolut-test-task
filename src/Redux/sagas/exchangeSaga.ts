@@ -9,7 +9,7 @@ import {
 import { rateSelector } from 'Selectors/rates';
 import { roundPlus } from 'Helpers';
 
-export default function* exchangeSaga() {
+export default function* exchangeSaga(): Iterator<any> {
   try {
     const writeOffValue = yield select(writeOffValueSelector);
     const currencyFrom = yield select(pocketFromCurrencySelector);

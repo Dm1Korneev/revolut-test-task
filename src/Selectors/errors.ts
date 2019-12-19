@@ -1,8 +1,9 @@
 import { createSelector } from 'reselect';
+import { StateType } from 'Redux/store';
 
-const errorsSelector = (state) => state.errors;
+const errorsSelector = (state: StateType): StateType['errors'] => state.errors;
 
-export const errorSelector = (state, type) => createSelector(
+export const errorSelector = (state: StateType, type: string): string => createSelector(
   errorsSelector,
   (errors) => errors[type],
 )(state);

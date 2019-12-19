@@ -1,4 +1,4 @@
-import { createAction } from 'redux-actions';
+import { Action, createAction } from 'redux-actions';
 
 import { getRequestAction } from 'Redux/shared';
 import {
@@ -6,11 +6,11 @@ import {
   GET_RATES, SET_POCKETS, SET_POCKET_FROM, SET_POCKET_TO, SET_RATES, SET_RECEIVE_VALUE, SET_WRITE_OFF_VALUE,
 } from 'Constants/actionNames';
 
-export const getRates = () => getRequestAction(GET_RATES);
+export const getRates = (): Action<any> => getRequestAction(GET_RATES);
 
 export const setRates = createAction(SET_RATES);
 
-export const getPockets = () => getRequestAction(GET_POCKETS);
+export const getPockets = (): Action<any> => getRequestAction(GET_POCKETS);
 
 export const setPockets = createAction(SET_POCKETS);
 
@@ -28,6 +28,6 @@ export const setReceiveValue = createAction(SET_RECEIVE_VALUE);
 
 export const dropExchangeValues = createAction(DROP_EXCHANGE_VALUES);
 
-export const exchange = () => getRequestAction(EXCHANGE);
+export const exchange = (): Action<any> => getRequestAction(EXCHANGE);
 
 export const changePockets = createAction(CHANGE_POCKETS);

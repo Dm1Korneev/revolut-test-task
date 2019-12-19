@@ -1,6 +1,7 @@
 import {
   all, put, select,
 } from 'redux-saga/effects';
+import { Action } from 'redux-actions';
 import {
   pocketFromCurrencySelector, pocketFromValueSelector, pocketToCurrencySelector,
 } from 'Selectors/exchange';
@@ -8,7 +9,7 @@ import { rateSelector } from 'Selectors/rates';
 import { roundPlus } from 'Helpers';
 import { setReceiveValue, setWriteOffValue } from 'Redux/actions';
 
-export default function* changeWriteOffValueSaga(action) {
+export default function* changeWriteOffValueSaga(action: Action<number>): Iterator<any> {
   const writeOffValue = action.payload;
   let receiveValue;
   if (writeOffValue === null) {

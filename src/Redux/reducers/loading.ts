@@ -1,4 +1,8 @@
-export default function loadingReducer(state = {}, action) {
+import { Action } from 'redux-actions';
+
+export type LoadingState = {[id: string]: number}
+
+export default function loadingReducer(state = {}, action: Action<any>): LoadingState {
   const { type } = action;
   const matches = /(.*)_(REQUEST|SUCCESS|FAILURE)/.exec(type);
 

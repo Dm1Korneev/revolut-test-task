@@ -3,7 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import errorMiddleware from './middlewares/error';
-import rootReducer, { StateType } from './reducers';
+import rootReducer, { StateType as StateTypeReducers } from './reducers';
 import rootSaga from './sagas';
 
 const storeFactory = (): Store => {
@@ -27,4 +27,4 @@ const storeFactory = (): Store => {
 
 export default storeFactory;
 
-export type StateType = StateType;
+export type StateType = StateTypeReducers;

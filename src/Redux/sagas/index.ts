@@ -12,7 +12,7 @@ import changeReceiveValueSaga from './changeReceiveValueSaga';
 import exchangeSaga from './exchangeSaga';
 import dropExchangeValuesSaga from './dropExchangeValuesSaga';
 
-export default function* rootSaga() {
+export default function* rootSaga(): Iterator<any> {
   yield all([
     yield takeEvery(getRequestAction(GET_POCKETS).type, getPocketsSaga),
     yield takeEvery(getRequestAction(GET_RATES).type, getRatesSaga),

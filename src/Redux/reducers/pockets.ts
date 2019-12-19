@@ -2,11 +2,13 @@ import { Action, handleActions } from 'redux-actions';
 
 import { SET_POCKETS } from 'Constants/actionNames';
 
-const defaultStore = {};
+export type PocketsState = {[id: string]: number}
+
+const defaultStore: PocketsState = {};
 
 export default handleActions(
   {
-    [SET_POCKETS]: (state, action: Action<{pockets: object}>) => ({ ...state, ...action.payload.pockets }),
+    [SET_POCKETS]: (state: PocketsState, action: Action<{pockets: object}>) => ({ ...state, ...action.payload.pockets }),
   },
   defaultStore,
 );
