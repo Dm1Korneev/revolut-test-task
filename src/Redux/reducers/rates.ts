@@ -22,7 +22,7 @@ const defaultStore: RatesState = {
   timestamp: null,
 };
 
-export default handleActions(
+export default handleActions<RatesState, any>(
   {
     [SET_RATES]: (state: RatesState, action: Action<SetRatesPayload>) => {
       const ratesValues: {[id: string]: number} = {};

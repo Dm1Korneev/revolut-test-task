@@ -18,7 +18,7 @@ const defaultStore: ExchangeState = {
   receiveValue: null,
 };
 
-export default handleActions(
+export default handleActions<ExchangeState, any>(
   {
     [SET_POCKET_FROM]: (state: ExchangeState, action: Action<string>) => ({ ...state, pocketFrom: action.payload }),
     [SET_POCKET_TO]: (state: ExchangeState, action: Action<string>) => ({ ...state, pocketTo: action.payload }),
