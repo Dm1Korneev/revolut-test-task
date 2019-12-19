@@ -3,13 +3,12 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import React from 'react';
+import { Saga, runSaga, stdChannel } from 'redux-saga';
 import '@testing-library/jest-dom/extend-expect';
-
-import { runSaga, stdChannel } from 'redux-saga';
 
 const EventEmitter = require('events');
 
-global.mockComponent = (componentName) => (props) => {
+global.mockComponent = (componentName: string) => (props: any): JSX.Element => {
   const mockProps = {};
   Object.keys(props)
     .filter((key) => key !== 'children')
@@ -20,7 +19,7 @@ global.mockComponent = (componentName) => (props) => {
   return (<div originalcomponent={componentName} {...mockProps}>{props.children}</div>);
 };
 
-global.recordSaga = async (saga, initialAction) => {
+global.recordSaga = async (saga: Saga, initialAction: {payload?: any}) => {
   const dispatched = [];
   const channel = stdChannel();
   const emitter = new EventEmitter();
