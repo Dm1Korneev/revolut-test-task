@@ -2,12 +2,12 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import CurrencyConverter from 'Components/CurrencyConverter/CurrencyConverter';
 
-jest.mock('Components/PocketFrom', () => global.mockComponent('PocketFrom'));
-jest.mock('Components/PocketTo', () => global.mockComponent('PocketTo'));
-jest.mock('Components/CurrentRate', () => global.mockComponent('CurrentRate'));
-jest.mock('Components/ExchangeButton', () => global.mockComponent('ExchangeButton'));
-jest.mock('Components/Loader', () => global.mockComponent('Loader'));
-jest.mock('Components/ChangePocketsButton', () => global.mockComponent('ChangePocketsButton'));
+jest.mock('Components/PocketFrom', () => mockComponent('PocketFrom'));
+jest.mock('Components/PocketTo', () => mockComponent('PocketTo'));
+jest.mock('Components/CurrentRate', () => mockComponent('CurrentRate'));
+jest.mock('Components/ExchangeButton', () => mockComponent('ExchangeButton'));
+jest.mock('Components/Loader', () => mockComponent('Loader'));
+jest.mock('Components/ChangePocketsButton', () => mockComponent('ChangePocketsButton'));
 
 describe('CurrencyConverter component', () => {
   const props = {

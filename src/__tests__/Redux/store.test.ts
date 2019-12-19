@@ -1,10 +1,11 @@
 
+import { mocked } from 'ts-jest/utils';
 import storeFactory from 'Redux/store';
 import createSagaMiddleware from 'redux-saga';
 import * as Redux from 'redux';
 
 jest.mock('redux-saga');
-createSagaMiddleware.mockImplementation(() => ({
+mocked(createSagaMiddleware).mockImplementation(() => ({
   run: jest.fn(),
 }));
 
@@ -47,7 +48,7 @@ describe('Store', () => {
 
   test('should run root saga', () => {
     const run = jest.fn();
-    createSagaMiddleware.mockImplementationOnce(() => ({
+    mocked(createSagaMiddleware).mockImplementationOnce(() => ({
       run,
     }));
 

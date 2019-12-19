@@ -1,11 +1,8 @@
 import reducer from 'Redux/reducers/loaded';
-import * as actionNames from 'Constants/actionNames';
-
-const getSuccessActionName = (actionName) => `${actionName}_SUCCESS`;
 
 describe('loaded reducer', () => {
   test('should return the initial state', () => {
-    expect(reducer(undefined, {})).toStrictEqual(
+    expect(reducer(undefined)).toStrictEqual(
       {},
     );
   });
@@ -13,7 +10,8 @@ describe('loaded reducer', () => {
   test('should not handle actions without SUCCESS postfix', () => {
     expect(
       reducer({}, {
-        type: actionNames.GET_RATES,
+        type: 'GET_RATES',
+        payload: undefined,
       }),
     ).toStrictEqual(
       {},
@@ -23,7 +21,8 @@ describe('loaded reducer', () => {
   test('should handle GET_RATES_SUCCESS', () => {
     expect(
       reducer({ GET_RATES: true }, {
-        type: getSuccessActionName(actionNames.GET_RATES),
+        type: 'GET_RATES_SUCCESS',
+        payload: undefined,
       }),
     ).toStrictEqual(
       { GET_RATES: true },

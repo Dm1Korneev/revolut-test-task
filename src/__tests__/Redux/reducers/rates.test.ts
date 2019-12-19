@@ -1,5 +1,4 @@
 import reducer from 'Redux/reducers/rates';
-import * as actionNames from 'Constants/actionNames';
 
 const defaultStore = {
   base: null,
@@ -9,7 +8,10 @@ const defaultStore = {
 
 describe('rates reducer', () => {
   test('should return the initial state', () => {
-    expect(reducer(undefined, {})).toStrictEqual(
+    expect(reducer(undefined, {
+      type: 'INIT',
+      payload: undefined,
+    })).toStrictEqual(
       defaultStore,
     );
   });
@@ -42,7 +44,7 @@ describe('rates reducer', () => {
 
     expect(
       reducer(defaultStore, {
-        type: actionNames.SET_RATES,
+        type: 'SET_RATES',
         payload: { rates },
       }),
     ).toStrictEqual(expectedResult);

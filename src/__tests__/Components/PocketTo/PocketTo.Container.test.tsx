@@ -3,12 +3,12 @@ import Container from 'Components/PocketTo';
 jest.mock('Components/PocketTo/PocketTo', () => 'PocketToComponent');
 jest.mock('Components/commonHoc', () => (...args) => args);
 jest.mock('Selectors/exchange', () => ({
-  pocketToCurrencySelector: () => 'pocketToCurrencySelector',
-  pocketToValueSelector: () => 'pocketToValueSelector',
-  receiveValueSelector: () => 'receiveValueSelector',
+  pocketToCurrencySelector: (): string => 'pocketToCurrencySelector',
+  pocketToValueSelector: (): string => 'pocketToValueSelector',
+  receiveValueSelector: (): string => 'receiveValueSelector',
 }));
 jest.mock('Selectors/currencies', () => ({
-  currenciesSelector: () => 'currenciesSelector',
+  currenciesSelector: (): string => 'currenciesSelector',
 }));
 jest.mock('Redux/actions', () => ({
   changeReceiveValue: 'changeReceiveValue',

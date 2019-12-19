@@ -4,9 +4,10 @@ exports[`PocketFrom component renders the component 1`] = `
 <DocumentFragment>
   <div
     originalcomponent="Pocket"
+    test-prop-currencies="[\\"USD\\",\\"EUR\\",\\"GBP\\"]"
+    test-prop-currency="\\"USD\\""
     test-prop-inputvaluelabel="\\"Write off amount\\""
     test-prop-selectcurrencylabel="\\"Write off currency\\""
-    test-prop-test="\\"test\\""
     test-prop-valueprefix="\\"-\\""
   />
 </DocumentFragment>

@@ -5,7 +5,10 @@ const defaultStore = {};
 
 describe('pockets reducer', () => {
   test('should return the initial state', () => {
-    expect(reducer(undefined, {})).toStrictEqual(
+    expect(reducer(undefined, {
+      type: 'INIT',
+      payload: undefined,
+    })).toStrictEqual(
       defaultStore,
     );
   });

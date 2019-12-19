@@ -1,7 +1,7 @@
 import * as actions from 'Redux/actions';
 import * as actionNames from 'Constants/actionNames';
 
-const getRequestActionName = (actionName) => `${actionName}_REQUEST`;
+const getRequestActionName = (actionName: string): string => `${actionName}_REQUEST`;
 
 describe('actions', () => {
   test('should create an action to get rates', () => {

@@ -3,12 +3,12 @@ import Container from 'Components/PocketFrom';
 jest.mock('Components/PocketFrom/PocketFrom', () => 'PocketFromComponent');
 jest.mock('Components/commonHoc', () => (...args) => args);
 jest.mock('Selectors/exchange', () => ({
-  pocketFromCurrencySelector: () => 'pocketFromCurrencySelector',
-  pocketFromValueSelector: () => 'pocketFromValueSelector',
-  writeOffValueSelector: () => 'writeOffValueSelector',
+  pocketFromCurrencySelector: (): string => 'pocketFromCurrencySelector',
+  pocketFromValueSelector: (): string => 'pocketFromValueSelector',
+  writeOffValueSelector: (): string => 'writeOffValueSelector',
 }));
 jest.mock('Selectors/currencies', () => ({
-  currenciesSelector: () => 'currenciesSelector',
+  currenciesSelector: (): string => 'currenciesSelector',
 }));
 jest.mock('Redux/actions', () => ({
   changeWriteOffValue: 'changeWriteOffValue',

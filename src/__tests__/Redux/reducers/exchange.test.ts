@@ -1,64 +1,69 @@
 import reducer from 'Redux/reducers/exchange';
-import * as actionNames from 'Constants/actionNames';
-import { CURRENCIES } from 'Constants';
+
+const GBP = 'GBP';
+const EUR = 'EUR';
+const USD = 'USD';
 
 const defaultStore = {
-  pocketFrom: CURRENCIES[0],
-  pocketTo: CURRENCIES[1],
+  pocketFrom: GBP,
+  pocketTo: EUR,
   writeOffValue: null,
   receiveValue: null,
 };
 
 describe('exchange reducer', () => {
   test('should return the initial state', () => {
-    expect(reducer(undefined, {})).toStrictEqual(
+    expect(reducer(undefined, {
+      type: 'INIT',
+      payload: undefined,
+    })).toStrictEqual(
       defaultStore,
     );
   });
 
   test('should handle SET_POCKET_FROM', () => {
     const expectedResult = {
-      pocketFrom: 'EUR',
-      pocketTo: CURRENCIES[1],
+      pocketFrom: EUR,
+      pocketTo: EUR,
       writeOffValue: null,
       receiveValue: null,
     };
 
     expect(
       reducer(defaultStore, {
-        type: actionNames.SET_POCKET_FROM,
-        payload: 'EUR',
+        type: 'SET_POCKET_FROM',
+        payload: EUR,
       }),
     ).toStrictEqual(expectedResult);
   });
 
   test('should handle SET_POCKET_TO', () => {
     const expectedResult = {
-      pocketFrom: CURRENCIES[0],
-      pocketTo: 'USD',
+      pocketFrom: GBP,
+      pocketTo: USD,
       writeOffValue: null,
       receiveValue: null,
     };
 
     expect(
       reducer(defaultStore, {
-        type: actionNames.SET_POCKET_TO,
-        payload: 'USD',
+        type: 'SET_POCKET_TO',
+        payload: USD,
       }),
     ).toStrictEqual(expectedResult);
   });
 
   test('should handle SET_WRITE_OFF_VALUE', () => {
     const expectedResult = {
-      pocketFrom: CURRENCIES[0],
-      pocketTo: CURRENCIES[1],
+      pocketFrom: GBP,
+      pocketTo: EUR,
       writeOffValue: 29.65,
       receiveValue: null,
     };
 
     expect(
       reducer(defaultStore, {
-        type: actionNames.SET_WRITE_OFF_VALUE,
+        type: 'SET_WRITE_OFF_VALUE',
         payload: 29.65,
       }),
     ).toStrictEqual(expectedResult);
@@ -66,15 +71,15 @@ describe('exchange reducer', () => {
 
   test('should handle SET_RECEIVE_VALUE', () => {
     const expectedResult = {
-      pocketFrom: CURRENCIES[0],
-      pocketTo: CURRENCIES[1],
+      pocketFrom: GBP,
+      pocketTo: EUR,
       writeOffValue: null,
       receiveValue: 1000.54,
     };
 
     expect(
       reducer(defaultStore, {
-        type: actionNames.SET_RECEIVE_VALUE,
+        type: 'SET_RECEIVE_VALUE',
         payload: 1000.54,
       }),
     ).toStrictEqual(expectedResult);
@@ -82,44 +87,46 @@ describe('exchange reducer', () => {
 
   test('should handle DROP_EXCHANGE_VALUES', () => {
     const store = {
-      pocketFrom: CURRENCIES[0],
-      pocketTo: CURRENCIES[1],
+      pocketFrom: GBP,
+      pocketTo: EUR,
       writeOffValue: 999.32,
       receiveValue: 0.43,
     };
 
     const expectedResult = {
-      pocketFrom: CURRENCIES[0],
-      pocketTo: CURRENCIES[1],
+      pocketFrom: GBP,
+      pocketTo: EUR,
       writeOffValue: null,
       receiveValue: null,
     };
 
     expect(
       reducer(store, {
-        type: actionNames.DROP_EXCHANGE_VALUES,
+        type: 'DROP_EXCHANGE_VALUES',
+        payload: undefined,
       }),
     ).toStrictEqual(expectedResult);
   });
 
   test('should handle CHANGE_POCKETS', () => {
     const store = {
-      pocketFrom: 'USD',
-      pocketTo: 'EUR',
+      pocketFrom: USD,
+      pocketTo: EUR,
       writeOffValue: null,
       receiveValue: null,
     };
 
     const expectedResult = {
-      pocketFrom: 'EUR',
-      pocketTo: 'USD',
+      pocketFrom: EUR,
+      pocketTo: USD,
       writeOffValue: null,
       receiveValue: null,
     };
 
     expect(
       reducer(store, {
-        type: actionNames.CHANGE_POCKETS,
+        type: 'CHANGE_POCKETS',
+        payload: undefined,
       }),
     ).toStrictEqual(expectedResult);
   });

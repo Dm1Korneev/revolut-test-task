@@ -2,9 +2,9 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import Pocket from 'Components/Pocket';
 
-jest.mock('Components/CurrencySelect', () => global.mockComponent('CurrencySelect'));
-jest.mock('Components/ValueInput', () => global.mockComponent('ValueInput'));
-jest.mock('Components/Pocket/PocketValue', () => global.mockComponent('PocketValue'));
+jest.mock('Components/CurrencySelect', () => mockComponent('CurrencySelect'));
+jest.mock('Components/ValueInput', () => mockComponent('ValueInput'));
+jest.mock('Components/Pocket/PocketValue', () => mockComponent('PocketValue'));
 
 describe('Pocket component', () => {
   const props = {

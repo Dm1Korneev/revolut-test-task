@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from 'Components/App/';
 
-jest.mock('Components/CurrencyConverter', () => global.mockComponent('CurrencyConverter'));
+jest.mock('Components/CurrencyConverter', () => mockComponent('CurrencyConverter'));
 
 describe('App component', () => {
   test('renders the component', () => {

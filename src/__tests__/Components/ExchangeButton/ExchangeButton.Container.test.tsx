@@ -6,8 +6,8 @@ jest.mock('Redux/actions', () => ({
   exchange: 'exchange',
 }));
 jest.mock('Selectors/exchange', () => ({
-  exchagesValuesIsSetSelector: () => true,
-  currenciesFromToSameSelector: () => false,
+  exchagesValuesIsSetSelector: (): boolean => true,
+  currenciesFromToSameSelector: (): boolean => false,
 }));
 
 describe('ExchangeButton container', () => {
@@ -30,8 +30,8 @@ describe('ExchangeButton container', () => {
 
   test('isActive prop is false if currenciesFromToSameSelector if true', () => {
     jest.doMock('Selectors/exchange', () => ({
-      exchagesValuesIsSetSelector: () => true,
-      currenciesFromToSameSelector: () => true,
+      exchagesValuesIsSetSelector: (): boolean => true,
+      currenciesFromToSameSelector: (): boolean => true,
     }));
     const props = {};
 

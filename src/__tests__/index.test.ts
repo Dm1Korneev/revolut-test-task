@@ -1,4 +1,3 @@
-
 describe('app Entry Point - /src/index.jsx', () => {
   beforeEach(() => {
     // Set up our document body
@@ -6,6 +5,6 @@ describe('app Entry Point - /src/index.jsx', () => {
   });
 
   it('should render app without error', () => {
-    expect(() => require('index.jsx')).not.toThrow();
+    expect(() => require('index.tsx')).not.toThrow();
   });
 });
