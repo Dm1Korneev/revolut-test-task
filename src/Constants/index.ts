@@ -9,4 +9,4 @@ export const USD = 'USD';
 
 export const CURRENCIES = [GBP, EUR, USD];
 
-export const CURRENCY_SYMBOLS = { [GBP]: '£', [EUR]: '€', [USD]: '$' };
+export const CURRENCY_SYMBOLS: {[id: string]: string} = { [GBP]: '£', [EUR]: '€', [USD]: '$' };
