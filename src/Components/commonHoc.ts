@@ -1,4 +1,4 @@
-import { ComponentType, FC } from 'react';
+import { ComponentType } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
 import { StateType } from 'Redux/store';
