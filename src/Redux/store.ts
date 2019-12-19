@@ -1,12 +1,12 @@
-import { applyMiddleware, createStore } from 'redux';
+import { Store, applyMiddleware, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import errorMiddleware from './middlewares/error';
-import rootReducer from './reducers';
+import rootReducer, { StateType } from './reducers';
 import rootSaga from './sagas';
 
-const storeFactory = () => {
+const storeFactory = (): Store => {
   const sagaMiddleware = createSagaMiddleware();
   const middlewareEnhancer = applyMiddleware(
     errorMiddleware,
@@ -26,3 +26,5 @@ const storeFactory = () => {
 };
 
 export default storeFactory;
+
+export type StateType = StateType;

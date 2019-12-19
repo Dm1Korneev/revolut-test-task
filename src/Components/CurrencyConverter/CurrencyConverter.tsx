@@ -20,9 +20,9 @@ type Props = {
 }
 
 class CurrencyConverter extends Component<Props> {
-  interval: number;
+  interval?: number;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.interval = undefined;

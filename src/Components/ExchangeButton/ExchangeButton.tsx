@@ -1,14 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 
 import { Button } from './ExchangeButton.styled';
 
-const propTypes = {
-  exchange: PropTypes.func.isRequired,
-  isActive: PropTypes.bool.isRequired,
-};
+type Props = {
+  exchange: () => void;
+  isActive: boolean;
+}
 
-function ExchangeButton(props) {
+const ExchangeButton: FC<Props> = (props): JSX.Element => {
   const {
     exchange, isActive,
   } = props;
@@ -18,8 +17,6 @@ function ExchangeButton(props) {
       Exchange
     </Button>
   );
-}
-
-ExchangeButton.propTypes = propTypes;
+};
 
 export default ExchangeButton;

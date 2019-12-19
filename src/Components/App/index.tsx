@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import CurrencyConverter from 'Components/CurrencyConverter';
 import { Container } from './App.styled';
 
-function App() {
-  return (
-    <Container>
-      <CurrencyConverter />
-    </Container>
-  );
-}
+const App: FC = (): JSX.Element => (
+  <Container>
+    <CurrencyConverter />
+  </Container>
+);
 
 export default App;

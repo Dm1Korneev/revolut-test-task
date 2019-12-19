@@ -1,20 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 
 import { getCurrencySymbol } from 'Helpers';
 
-const defaultProps = {
-  value: 0,
-};
+type Props = {
+  currency: string;
+  value: number;
+}
 
-const propTypes = {
-  currency: PropTypes.string.isRequired,
-  value: PropTypes.number,
-};
-
-function PocketValue(props) {
+const PocketValue: FC<Props> = (props): JSX.Element => {
   const {
-    currency, value,
+    currency,
+    value,
   } = props;
 
   return (
@@ -24,9 +20,6 @@ function PocketValue(props) {
       {value.toFixed(2)}
     </span>
   );
-}
-
-PocketValue.propTypes = propTypes;
-PocketValue.defaultProps = defaultProps;
+};
 
 export default PocketValue;

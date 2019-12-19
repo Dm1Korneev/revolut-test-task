@@ -4,10 +4,11 @@ import {
   pocketToCurrencySelector, pocketToValueSelector, receiveValueSelector,
 } from 'Selectors/exchange';
 import { currenciesSelector } from 'Selectors/currencies';
+import { StateType } from 'Redux/store';
 
 import PocketTo from './PocketTo';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: StateType): Record<string, any> => ({
   currency: pocketToCurrencySelector(state),
   valueHave: pocketToValueSelector(state),
   currencies: currenciesSelector(),

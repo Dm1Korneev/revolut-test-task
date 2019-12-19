@@ -3,9 +3,9 @@ import { combineReducers } from 'redux';
 import loading from './loading';
 import loaded from './loaded';
 import errors from './error';
-import rates from './rates';
+import rates, { RatesState } from './rates';
 import pockets from './pockets';
-import exchange from './exchange';
+import exchange, { ExchangeState } from './exchange';
 
 export default combineReducers({
   loaded,
@@ -15,3 +15,8 @@ export default combineReducers({
   pockets,
   exchange,
 });
+
+export type StateType = {
+  exchange: ExchangeState;
+  rates: RatesState;
+}

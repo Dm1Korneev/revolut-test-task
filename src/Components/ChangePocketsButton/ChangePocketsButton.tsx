@@ -5,8 +5,7 @@ import { Button } from './ChangePocketsButton.styled';
 type Props = {
   changePockets: () => void;
 }
-
-const ChangePocketsButton: FC<Props> = (props: Props): JSX.Element => {
+const ChangePocketsButton: FC<Props> = (props): JSX.Element => {
   const {
     changePockets,
   } = props;

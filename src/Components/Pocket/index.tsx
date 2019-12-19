@@ -1,34 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC, ReactNode } from 'react';
 
 import CurrencySelect from 'Components/CurrencySelect';
 import ValueInput from 'Components/ValueInput';
 import PocketValue from './PocketValue';
 import { Container, InfoLine, InputsLine } from './Pocket.styled';
 
-const defaultProps = {
-  value: null,
-  valueHave: 0,
-  children: null,
-  valuePrefix: '',
-};
+export type Props = {
+  currency: string;
+  value?: number | null;
+  valueHave?: number;
+  currencies: Array<string>;
+  setPocketCurrency: () => void;
+  changeValue: () => void;
+  valuePrefix?: string;
+  inputValueLabel: string;
+  selectCurrencyLabel: string;
+  children?: ReactNode;
+}
 
-const propTypes = {
-  currency: PropTypes.string.isRequired,
-  value: PropTypes.number,
-  valueHave: PropTypes.number,
-  currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  setPocketCurrency: PropTypes.func.isRequired,
-  changeValue: PropTypes.func.isRequired,
-  children: PropTypes.element,
-  valuePrefix: PropTypes.string,
-  inputValueLabel: PropTypes.string.isRequired,
-  selectCurrencyLabel: PropTypes.string.isRequired,
-};
-
-function Pocket(props) {
+const Pocket: FC<Props> = (props): JSX.Element => {
   const {
-    currency, value, valueHave, currencies, setPocketCurrency,
+    currency, value = null, valueHave = 0, currencies, setPocketCurrency,
     children, changeValue, valuePrefix, selectCurrencyLabel, inputValueLabel,
   } = props;
 
@@ -54,9 +46,6 @@ function Pocket(props) {
       </InfoLine>
     </Container>
   );
-}
-
-Pocket.propTypes = propTypes;
-Pocket.defaultProps = defaultProps;
+};
 
 export default Pocket;

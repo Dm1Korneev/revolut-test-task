@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-import Pocket from 'Components/Pocket';
+import Pocket, { Props as PocketProps } from 'Components/Pocket';
 import CurrentRate from 'Components/CurrentRate';
 
-function PocketTo(props) {
-  return (
-    <Pocket
-      {...props}
-      valuePrefix="+"
-      inputValueLabel="Receive amount"
-      selectCurrencyLabel="Receive currency"
-    >
-      <CurrentRate reverse />
-    </Pocket>
-  );
-}
+const PocketTo: FC<PocketProps> = (props: PocketProps): JSX.Element => (
+  <Pocket
+    {...props}
+    valuePrefix="+"
+    inputValueLabel="Receive amount"
+    selectCurrencyLabel="Receive currency"
+  >
+    <CurrentRate reverse />
+  </Pocket>
+);
 
 export default PocketTo;

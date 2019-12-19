@@ -1,10 +1,14 @@
 import commonHoc from 'Components/commonHoc';
 import { pocketFromCurrencySelector, pocketToCurrencySelector } from 'Selectors/exchange';
 import { rateSelector } from 'Selectors/rates';
+import { StateType } from 'Redux/store';
 
 import CurrentRate from './CurrentRate';
 
-const mapStateToProps = (state, props) => {
+type Props = {
+  reverse?: boolean;
+}
+const mapStateToProps = (state: StateType, props: Props): Record<string, any> => {
   let currencyFrom;
   let currencyTo;
 

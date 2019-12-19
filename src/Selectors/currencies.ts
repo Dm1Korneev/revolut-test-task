@@ -1,3 +1,3 @@
 import { CURRENCIES } from 'Constants';
 
-export const currenciesSelector = () => CURRENCIES;
+export const currenciesSelector = (): Array<string> => CURRENCIES;

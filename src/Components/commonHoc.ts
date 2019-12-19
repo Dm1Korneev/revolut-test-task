@@ -1,8 +1,13 @@
-import { Component, FC } from 'react';
+import { ComponentType, FC } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { Dispatch, bindActionCreators } from 'redux';
+import { StateType } from 'Redux/store';
 
-const commonHoc = (component: FC, params = {}): Component => {
+type Params = {
+  mapStateToProps?: (state: StateType, props?: any) => Record<string, any>;
+  mapDispatchToProps?: Record<string, any>;
+};
+const commonHoc = (component: ComponentType<any>, params: Params = {}): ComponentType => {
   const {
     mapStateToProps = null,
     mapDispatchToProps = null,
@@ -14,7 +19,7 @@ const commonHoc = (component: FC, params = {}): Component => {
 
   if (isConnected) {
     const dispatchMapper = !mapDispatchToProps ? null
-      : (dispatch) => bindActionCreators(mapDispatchToProps, dispatch);
+      : (dispatch: Dispatch): Record<string, any> => bindActionCreators(mapDispatchToProps, dispatch);
 
     ConnectedComponent = connect(mapStateToProps, dispatchMapper)(component);
   }

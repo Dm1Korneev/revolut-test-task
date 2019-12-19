@@ -3,7 +3,7 @@ import { pockets } from './dummyData';
 
 type parseJSONInterface = {
   response: Response;
-  result: Object;
+  result: Record<string, any>;
 }
 
 function parseJSON(response: Response): Promise<parseJSONInterface> {
@@ -13,7 +13,7 @@ function parseJSON(response: Response): Promise<parseJSONInterface> {
   })));
 }
 
-function apiCall(URI: RequestInfo, optionsParams: RequestInit) {
+function apiCall(URI: RequestInfo, optionsParams: RequestInit): Promise<object> {
   const options = {
     ...optionsParams,
     headers: {
@@ -34,9 +34,9 @@ function apiCall(URI: RequestInfo, optionsParams: RequestInit) {
   });
 }
 
-export const getPockets = () => new Promise((resolve) => resolve(pockets));
+export const getPockets = (): object => new Promise((resolve) => resolve(pockets));
 
-export const getRates = () => {
+export const getRates = (): object => {
   const uri = `${CURRENCIES_RATE_API_URL}/latest.json?app_id=${CURRENCIES_RATE_API_ID}`;
   const options = {
     method: 'GET',

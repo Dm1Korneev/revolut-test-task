@@ -1,16 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-import Pocket from 'Components/Pocket';
+import Pocket, { Props as PocketProps } from 'Components/Pocket';
 
-function PocketFrom(props) {
-  return (
-    <Pocket
-      {...props}
-      valuePrefix="-"
-      inputValueLabel="Write off amount"
-      selectCurrencyLabel="Write off currency"
-    />
-  );
-}
+const PocketFrom: FC<PocketProps> = (props: PocketProps): JSX.Element => (
+  <Pocket
+    {...props}
+    valuePrefix="-"
+    inputValueLabel="Write off amount"
+    selectCurrencyLabel="Write off currency"
+  />
+);
 
 export default PocketFrom;

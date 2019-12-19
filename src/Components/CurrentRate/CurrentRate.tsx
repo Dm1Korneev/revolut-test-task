@@ -1,15 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 
 import { getCurrencySymbol } from 'Helpers';
 
-const propTypes = {
-  currentRate: PropTypes.number.isRequired,
-  currencyFrom: PropTypes.string.isRequired,
-  currencyTo: PropTypes.string.isRequired,
-};
+type Props = {
+  currentRate: number;
+  currencyFrom: string;
+  currencyTo: string;
+}
 
-function CurrentRate(props) {
+const CurrentRate: FC<Props> = (props): JSX.Element => {
   const {
     currentRate, currencyFrom, currencyTo,
   } = props;
@@ -22,8 +21,6 @@ function CurrentRate(props) {
       {currentRate.toFixed(4)}
     </span>
   );
-}
-
-CurrentRate.propTypes = propTypes;
+};
 
 export default CurrentRate;

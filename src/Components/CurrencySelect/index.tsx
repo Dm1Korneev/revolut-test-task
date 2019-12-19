@@ -1,27 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 
 import { Select } from './CurrencySelect.styled';
 
-const propTypes = {
-  currency: PropTypes.string.isRequired,
-  currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  setPocketCurrency: PropTypes.func.isRequired,
-  label: PropTypes.string.isRequired,
-};
+type Props = {
+  currency: string;
+  currencies: Array<string>;
+  setPocketCurrency: (currency: string) => void;
+  label: string;
+}
 
-function CurrencySelect(props) {
+const CurrencySelect: FC<Props> = (props): JSX.Element => {
   const {
     currencies, currency, setPocketCurrency, label,
   } = props;
 
+  const onChangeHandler = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+    setPocketCurrency(event.target.value);
+  };
+
   return (
-    <Select value={currency} onChange={(event) => setPocketCurrency(event.target.value)} aria-label={label}>
+    <Select value={currency} onChange={onChangeHandler} aria-label={label}>
       {currencies.map((element) => <option key={element} value={element}>{element}</option>)}
     </Select>
   );
-}
-
-CurrencySelect.propTypes = propTypes;
+};
 
 export default CurrencySelect;
