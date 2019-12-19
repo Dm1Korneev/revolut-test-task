@@ -1,4 +1,5 @@
 import { all, takeEvery } from 'redux-saga/effects';
+import { SagaIterator } from 'redux-saga';
 import {
   CHANGE_POCKETS, CHANGE_RECEIVE_VALUE, CHANGE_WRITE_OFF_VALUE,
   EXCHANGE, GET_POCKETS, GET_RATES, SET_POCKET_FROM, SET_POCKET_TO,
@@ -12,7 +13,7 @@ import changeReceiveValueSaga from './changeReceiveValueSaga';
 import exchangeSaga from './exchangeSaga';
 import dropExchangeValuesSaga from './dropExchangeValuesSaga';
 
-export default function* rootSaga(): Iterator<any> {
+export default function* rootSaga(): SagaIterator {
   yield all([
     yield takeEvery(getRequestAction(GET_POCKETS).type, getPocketsSaga),
     yield takeEvery(getRequestAction(GET_RATES).type, getRatesSaga),
