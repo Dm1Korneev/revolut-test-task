@@ -1,3 +1,4 @@
+import { ComponentType } from 'react';
 import commonHoc from 'Components/commonHoc';
 import { pocketFromCurrencySelector, pocketToCurrencySelector } from 'Selectors/exchange';
 import { rateSelector } from 'Selectors/rates';
@@ -28,4 +29,4 @@ const mapStateToProps = (state: StateType, props: Props): Record<string, any> =>
 
 export default commonHoc(CurrentRate, {
   mapStateToProps,
-});
+}) as ComponentType<Props>;
