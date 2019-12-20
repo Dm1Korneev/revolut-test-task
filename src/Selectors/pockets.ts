@@ -1,4 +1,4 @@
-import { createSelector } from 'reselect';
+import { createSelector } from '@reduxjs/toolkit';
 import { StateType } from 'Redux/store';
 
 const pocketsSelector = (state: StateType): StateType['pockets'] => state.pockets;

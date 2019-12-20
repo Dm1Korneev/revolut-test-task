@@ -1,4 +1,4 @@
-import { createSelector } from 'reselect';
+import { createSelector } from '@reduxjs/toolkit';
 import { StateType } from 'Redux/store';
 
 const errorsSelector = (state: StateType): StateType['errors'] => state.errors;
