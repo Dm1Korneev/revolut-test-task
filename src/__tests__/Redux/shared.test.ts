@@ -12,7 +12,7 @@ describe('shared', () => {
         test: 'test',
       },
     };
-    expect(getFailureAction(actionName, params)).toStrictEqual(expectedResult);
+    expect(getFailureAction(actionName)(params)).toStrictEqual(expectedResult);
   });
 
   test('should create get request action', () => {
@@ -26,7 +26,7 @@ describe('shared', () => {
         test: 'test',
       },
     };
-    expect(getRequestAction(actionName, params)).toStrictEqual(expectedResult);
+    expect(getRequestAction(actionName)(params)).toStrictEqual(expectedResult);
   });
 
   test('should create get success action', () => {
@@ -40,6 +40,6 @@ describe('shared', () => {
         test: 'test',
       },
     };
-    expect(getSuccessAction(actionName, params)).toStrictEqual(expectedResult);
+    expect(getSuccessAction(actionName)(params)).toStrictEqual(expectedResult);
   });
 });

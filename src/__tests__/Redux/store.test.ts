@@ -5,7 +5,8 @@ import createSagaMiddleware from 'redux-saga';
 import * as Redux from 'redux';
 
 jest.mock('redux-saga');
-mocked(createSagaMiddleware).mockImplementation(() => ({
+const mockedCreateSagaMiddleware = mocked(createSagaMiddleware);
+mockedCreateSagaMiddleware.mockImplementation(() => ({
   run: jest.fn(),
 }));
 
@@ -33,7 +34,7 @@ describe('Store', () => {
 
   test('should call createSagaMiddleware', () => {
     storeFactory();
-    expect(createSagaMiddleware).toHaveBeenCalledTimes(1);
+    expect(mockedCreateSagaMiddleware).toHaveBeenCalledTimes(1);
   });
 
   test('should call applyMiddleware', () => {
@@ -47,12 +48,6 @@ describe('Store', () => {
   });
 
   test('should run root saga', () => {
-    const run = jest.fn();
-    mocked(createSagaMiddleware).mockImplementationOnce(() => ({
-      run,
-    }));
-
-    storeFactory();
-    expect(run).toHaveBeenCalledWith({ SAGA: 'SAGA' });
+    expect(mockedCreateSagaMiddleware).toHaveBeenCalledWith({ SAGA: 'SAGA' });
   });
 });
