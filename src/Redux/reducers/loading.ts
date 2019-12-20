@@ -1,8 +1,8 @@
-import { Action } from 'redux-actions';
+import { Action } from '@reduxjs/toolkit';
 
 export type LoadingState = {[id: string]: number}
 
-export default function loadingReducer(state = {}, action?: Action<any>): LoadingState {
+export default function loadingReducer(state = {}, action: Action): LoadingState {
   if (!action) {
     return state;
   }

@@ -1,15 +1,7 @@
-import { Action, handleActions } from 'redux-actions';
+import { createReducer } from '@reduxjs/toolkit';
 
-import { SET_RATES } from 'Constants/actionNames';
+import { setRates } from 'Redux/actions';
 import { CURRENCIES } from 'Constants';
-
-type SetRatesPayload = {
-  rates: {
-    rates: {[id: string]: number};
-    base: string;
-    timestamp: string;
-  };
-}
 
 export type RatesState = {
   base: string | null;
@@ -22,19 +14,17 @@ const defaultStore: RatesState = {
   timestamp: null,
 };
 
-export default handleActions<RatesState, any>(
-  {
-    [SET_RATES]: (state: RatesState, action: Action<SetRatesPayload>) => {
-      const ratesValues: {[id: string]: number} = {};
-      const { rates, base, timestamp } = action.payload.rates;
-      CURRENCIES.forEach((currency) => {
-        if (rates[currency]) {
-          ratesValues[currency] = rates[currency];
-        }
-      });
+export default createReducer(defaultStore, (builder) => builder
+  .addCase(setRates, (state, action) => {
+    const ratesValues: {[id: string]: number} = {};
+    const { rates, base, timestamp } = action.payload.rates;
+    CURRENCIES.forEach((currency) => {
+      if (rates[currency]) {
+        ratesValues[currency] = rates[currency];
+      }
+    });
 
-      return { base, ratesValues, timestamp };
-    },
-  },
-  defaultStore,
-);
+    return {
+      base, ratesValues, timestamp,
+    };
+  }));

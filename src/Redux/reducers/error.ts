@@ -1,8 +1,9 @@
-import { Action } from 'redux-actions';
 
-export type ErrorState = {[id: string]: string}
+import { PayloadAction } from '@reduxjs/toolkit';
 
-export default function loadingReducer(state = {}, action: Action<any>): ErrorState {
+type ErrorState = {[id: string]: string}
+
+export default function loadingReducer(state = {}, action: PayloadAction<any>): ErrorState {
   const { type, payload } = action;
   const matches = /(.*)_(REQUEST|FAILURE)/.exec(type);
 

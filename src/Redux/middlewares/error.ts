@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
-import { Action } from 'redux-actions';
+import { PayloadAction } from '@reduxjs/toolkit';
 
-export default () => (next: Dispatch) => (action: Action<any>): Action<any> => {
+export default () => (next: Dispatch) => (action: PayloadAction<any>): PayloadAction<any> => {
   if (action.payload && action.payload.error) {
     console.warn('[Error Middleware error]:', action.payload.error); /* eslint-disable-line no-console */
   }

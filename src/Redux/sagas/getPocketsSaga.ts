@@ -9,8 +9,8 @@ export default function* getPocketsSaga(): SagaIterator {
   try {
     const pockets = yield call(getPocketsApi);
     yield put(setPockets({ pockets }));
-    yield put(getSuccessAction(GET_POCKETS, { pockets }));
+    yield put(getSuccessAction(GET_POCKETS)({ pockets }));
   } catch (error) {
-    yield put(getFailureAction(GET_POCKETS, { error }));
+    yield put(getFailureAction(GET_POCKETS)({ error }));
   }
 }

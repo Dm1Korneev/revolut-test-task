@@ -8,9 +8,9 @@ import { GET_RATES } from 'Constants/actionNames';
 export default function* getRatesSaga(): SagaIterator {
   try {
     const rates = yield call(getRatesApi);
-    yield put(getSuccessAction(GET_RATES, { rates }));
+    yield put(getSuccessAction(GET_RATES)({ rates }));
     yield put(setRates({ rates }));
   } catch (error) {
-    yield put(getFailureAction(GET_RATES, { error }));
+    yield put(getFailureAction(GET_RATES)({ error }));
   }
 }

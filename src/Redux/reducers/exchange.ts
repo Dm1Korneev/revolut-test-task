@@ -1,9 +1,9 @@
-import { Action, handleActions } from 'redux-actions';
+import { createReducer } from '@reduxjs/toolkit';
 
 import { CURRENCIES } from 'Constants';
 import {
-  CHANGE_POCKETS, DROP_EXCHANGE_VALUES, SET_POCKET_FROM, SET_POCKET_TO, SET_RECEIVE_VALUE, SET_WRITE_OFF_VALUE,
-} from 'Constants/actionNames';
+  changePockets, dropExchangeValues, setPocketFrom, setPocketTo, setReceiveValue, setWriteOffValue,
+} from 'Redux/actions';
 
 export type ExchangeState = {
   pocketFrom: string;
@@ -18,14 +18,10 @@ const defaultStore: ExchangeState = {
   receiveValue: null,
 };
 
-export default handleActions<ExchangeState, any>(
-  {
-    [SET_POCKET_FROM]: (state: ExchangeState, action: Action<string>) => ({ ...state, pocketFrom: action.payload }),
-    [SET_POCKET_TO]: (state: ExchangeState, action: Action<string>) => ({ ...state, pocketTo: action.payload }),
-    [SET_WRITE_OFF_VALUE]: (state: ExchangeState, action: Action<number | null>) => ({ ...state, writeOffValue: action.payload }),
-    [SET_RECEIVE_VALUE]: (state: ExchangeState, action: Action<number | null>) => ({ ...state, receiveValue: action.payload }),
-    [DROP_EXCHANGE_VALUES]: (state: ExchangeState) => ({ ...state, writeOffValue: null, receiveValue: null }),
-    [CHANGE_POCKETS]: (state: ExchangeState) => ({ ...state, pocketFrom: state.pocketTo, pocketTo: state.pocketFrom }),
-  },
-  defaultStore,
-);
+export default createReducer(defaultStore, (builder) => builder
+  .addCase(setPocketFrom, (state, action) => ({ ...state, pocketFrom: action.payload }))
+  .addCase(setPocketTo, (state, action) => ({ ...state, pocketTo: action.payload }))
+  .addCase(setWriteOffValue, (state, action) => ({ ...state, writeOffValue: action.payload }))
+  .addCase(setReceiveValue, (state, action) => ({ ...state, receiveValue: action.payload }))
+  .addCase(dropExchangeValues, (state) => ({ ...state, writeOffValue: null, receiveValue: null }))
+  .addCase(changePockets, (state) => ({ ...state, pocketFrom: state.pocketTo, pocketTo: state.pocketFrom })));

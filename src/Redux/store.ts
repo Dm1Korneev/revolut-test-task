@@ -1,24 +1,18 @@
-import { Store, applyMiddleware, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { EnhancedStore, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 
 import errorMiddleware from './middlewares/error';
 import rootReducer, { StateType as StateTypeReducers } from './reducers';
 import rootSaga from './sagas';
 
-const storeFactory = (): Store => {
+const storeFactory = (): EnhancedStore => {
   const sagaMiddleware = createSagaMiddleware();
-  const middlewareEnhancer = applyMiddleware(
-    errorMiddleware,
-    sagaMiddleware,
-  );
-  const composeEnhancers = process.env.NODE_ENV === 'production'
-    ? middlewareEnhancer : composeWithDevTools(middlewareEnhancer);
 
-  const store = createStore(
-    rootReducer,
-    composeEnhancers,
-  );
+  const store = configureStore({
+    reducer: rootReducer,
+    middleware: [...getDefaultMiddleware(), errorMiddleware, sagaMiddleware],
+    devTools: process.env.NODE_ENV !== 'production',
+  });
 
   sagaMiddleware.run(rootSaga);
 

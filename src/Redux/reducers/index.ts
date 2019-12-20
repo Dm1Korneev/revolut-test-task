@@ -1,13 +1,13 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from '@reduxjs/toolkit';
 
-import loading, { LoadingState } from './loading';
-import loaded, { LoadedState } from './loaded';
-import errors, { ErrorState } from './error';
-import rates, { RatesState } from './rates';
-import pockets, { PocketsState } from './pockets';
-import exchange, { ExchangeState } from './exchange';
+import loading from './loading';
+import loaded from './loaded';
+import errors from './error';
+import rates from './rates';
+import pockets from './pockets';
+import exchange from './exchange';
 
-export default combineReducers({
+const rootReducer = combineReducers({
   loaded,
   loading,
   errors,
@@ -15,12 +15,6 @@ export default combineReducers({
   pockets,
   exchange,
 });
+export default rootReducer;
 
-export type StateType = {
-  loaded: LoadedState;
-  loading: LoadingState;
-  errors: ErrorState;
-  rates: RatesState;
-  exchange: ExchangeState;
-  pockets: PocketsState;
-}
+export type StateType = ReturnType<typeof rootReducer>

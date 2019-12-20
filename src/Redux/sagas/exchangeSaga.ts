@@ -33,9 +33,9 @@ export default function* exchangeSaga(): SagaIterator {
     };
     yield all([
       put(setPockets({ pockets })),
-      put(getSuccessAction(EXCHANGE)),
+      put(getSuccessAction(EXCHANGE)()),
     ]);
   } catch (error) {
-    yield put(getFailureAction(EXCHANGE, { error }));
+    yield put(getFailureAction(EXCHANGE)({ error }));
   }
 }
