@@ -1,18 +1,20 @@
-
-import { mocked } from 'ts-jest/utils';
 import storeFactory from 'Redux/store';
-import createSagaMiddleware from 'redux-saga';
-import * as Redux from 'redux';
+import * as ReduxSaga from 'redux-saga';
+import * as ReduxToolkit from '@reduxjs/toolkit';
 
 jest.mock('redux-saga');
-const mockedCreateSagaMiddleware = mocked(createSagaMiddleware);
-mockedCreateSagaMiddleware.mockImplementation(() => ({
-  run: jest.fn(),
+const mockedCreateSagaMiddleware = jest.spyOn(ReduxSaga, 'default');
+const run = jest.fn();
+mockedCreateSagaMiddleware.mockReturnValue({ run } as any);
+
+jest.mock('@reduxjs/toolkit', () => ({
+  configureStore: jest.fn(() => ({ STORE: 'STORE' })),
+  getDefaultMiddleware: jest.fn(() => []),
 }));
 
-jest.mock('redux', () => ({
-  applyMiddleware: jest.fn(),
-  createStore: jest.fn(() => ({ STORE: 'STORE' })),
+jest.mock('@reduxjs/toolkit', () => ({
+  configureStore: jest.fn(() => ({ STORE: 'STORE' })),
+  getDefaultMiddleware: jest.fn(() => []),
 }));
 
 jest.mock('Redux/reducers', () => ({
@@ -37,17 +39,18 @@ describe('Store', () => {
     expect(mockedCreateSagaMiddleware).toHaveBeenCalledTimes(1);
   });
 
-  test('should call applyMiddleware', () => {
+  test('should call getDefaultMiddleware', () => {
     storeFactory();
-    expect(Redux.applyMiddleware).toHaveBeenCalledTimes(1);
+    expect(ReduxToolkit.getDefaultMiddleware).toHaveBeenCalledTimes(1);
   });
 
-  test('should call createStore', () => {
+  test('should call configureStore', () => {
     storeFactory();
-    expect(Redux.createStore).toHaveBeenCalledTimes(1);
+    expect(ReduxToolkit.configureStore).toHaveBeenCalledTimes(1);
   });
 
   test('should run root saga', () => {
-    expect(mockedCreateSagaMiddleware).toHaveBeenCalledWith({ SAGA: 'SAGA' });
+    storeFactory();
+    expect(run).toHaveBeenCalledWith({ SAGA: 'SAGA' });
   });
 });
