@@ -14,20 +14,20 @@ exports[`CurrencyConverter component renders the component 1`] = `
       class="sc-bwzfXH sc-htpNat dtmtwx"
     >
       <div
-        originalcomponent="PocketFrom"
+        data-originalcomponent="PocketFrom"
       />
       <div
         class="sc-ifAKCX gHNnsm"
       >
         <div
-          originalcomponent="CurrentRate"
+          data-originalcomponent="CurrentRate"
         />
       </div>
       <div
         class="sc-EHOje btOkpo"
       >
         <div
-          originalcomponent="ChangePocketsButton"
+          data-originalcomponent="ChangePocketsButton"
         />
       </div>
     </div>
@@ -35,10 +35,10 @@ exports[`CurrencyConverter component renders the component 1`] = `
       class="sc-bwzfXH sc-bxivhb eMThae"
     >
       <div
-        originalcomponent="PocketTo"
+        data-originalcomponent="PocketTo"
       />
       <div
-        originalcomponent="ExchangeButton"
+        data-originalcomponent="ExchangeButton"
       />
     </div>
   </div>
@@ -56,7 +56,7 @@ exports[`CurrencyConverter component show loader when isBusy = true 1`] = `
       Currency exchange
     </h1>
     <div
-      originalcomponent="Loader"
+      data-originalcomponent="Loader"
     />
   </div>
 </DocumentFragment>

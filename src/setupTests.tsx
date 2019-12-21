@@ -5,36 +5,41 @@
 import React from 'react';
 import { Saga, runSaga, stdChannel } from 'redux-saga';
 import '@testing-library/jest-dom/extend-expect';
+import EventEmitter from 'events';
+import { PayloadAction } from '@reduxjs/toolkit';
 
-const EventEmitter = require('events');
-
-global.mockComponent = (componentName: string) => (props: any): JSX.Element => {
-  const mockProps = {};
+const myGlobal = global as any;
+myGlobal.mockComponent = (componentName: string) => (props: any): JSX.Element => {
+  const mockProps: {[id: string]: any} = {};
   Object.keys(props)
     .filter((key) => key !== 'children')
     .forEach((key) => {
       const value = JSON.stringify(props[key]);
       mockProps[`test-prop-${key.toLowerCase()}`] = value;
     });
-  return (<div originalcomponent={componentName} {...mockProps}>{props.children}</div>);
+  return (<div data-originalcomponent={componentName} {...mockProps}>{props.children}</div>);
 };
 
-global.recordSaga = async (saga: Saga, initialAction: {payload?: any}) => {
-  const dispatched = [];
+type Dispatched = Array<PayloadAction>;
+type Emit = (action: PayloadAction) => void;
+myGlobal.recordSaga = async (saga: Saga, initialAction: PayloadAction): Promise<{dispatched: Dispatched; emit: Emit}> => {
+  const dispatched: Dispatched = [];
   const channel = stdChannel();
   const emitter = new EventEmitter();
   emitter.on('event', (action) => {
     channel.put(action);
   });
   await runSaga({
-    dispatch: (action) => dispatched.push(action),
+    dispatch: (action: PayloadAction): void => {
+      dispatched.push(action);
+    },
     channel,
-    getState: () => {},
+    getState: () => ({}),
   },
   saga,
-  initialAction).done;
+  initialAction).result;
 
-  const emit = (action) => {
+  const emit = (action: PayloadAction): void => {
     emitter.emit('event', action);
   };
 

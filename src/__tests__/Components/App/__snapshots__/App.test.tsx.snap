@@ -6,7 +6,7 @@ exports[`App component renders the component 1`] = `
     class="sc-bdVaJa kWexiN"
   >
     <div
-      originalcomponent="CurrencyConverter"
+      data-originalcomponent="CurrencyConverter"
     />
   </main>
 </DocumentFragment>
