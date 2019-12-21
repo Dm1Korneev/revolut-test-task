@@ -1,3 +1,4 @@
+import { mocked } from 'ts-jest/utils';
 import exchangeSaga from 'Redux/sagas/exchangeSaga';
 
 import * as SelectorsExchange from 'Selectors/exchange';
@@ -5,17 +6,17 @@ import * as SelectorsRates from 'Selectors/rates';
 import * as ReduxActions from 'Redux/actions';
 
 jest.mock('Selectors/exchange');
-SelectorsExchange.pocketFromCurrencySelector.mockImplementation(() => 'USD');
-SelectorsExchange.pocketFromValueSelector.mockImplementation(() => 1000);
-SelectorsExchange.pocketToCurrencySelector.mockImplementation(() => 'EUR');
-SelectorsExchange.pocketToValueSelector.mockImplementation(() => 4000);
-SelectorsExchange.writeOffValueSelector.mockImplementation(() => 100);
+mocked(SelectorsExchange.pocketFromCurrencySelector).mockImplementation(() => 'USD');
+mocked(SelectorsExchange.pocketFromValueSelector).mockImplementation(() => 1000);
+mocked(SelectorsExchange.pocketToCurrencySelector).mockImplementation(() => 'EUR');
+mocked(SelectorsExchange.pocketToValueSelector).mockImplementation(() => 4000);
+mocked(SelectorsExchange.writeOffValueSelector).mockImplementation(() => 100);
 
 jest.mock('Selectors/rates');
-SelectorsRates.rateSelector.mockImplementation(() => 0.88);
+mocked(SelectorsRates.rateSelector).mockImplementation(() => 0.88);
 
 jest.mock('Redux/actions');
-const spySetPockets = jest.spyOn(ReduxActions, 'setPockets').mockImplementation((payload) => ({ action: 'setPockets', payload }));
+const spySetPockets = jest.spyOn(ReduxActions, 'setPockets').mockImplementation((payload) => ({ type: 'setPockets', payload }));
 
 describe('exchangeSaga saga', () => {
   afterEach(() => {
@@ -23,10 +24,10 @@ describe('exchangeSaga saga', () => {
   });
 
   test('should call setPockets and EXCHANGE_SUCCESS actions', async () => {
-    const { dispatched } = await global.recordSaga(exchangeSaga);
+    const { dispatched } = await recordSaga(exchangeSaga);
 
     expect(dispatched).toContainEqual({
-      action: 'setPockets',
+      type: 'setPockets',
       payload: { pockets: { EUR: 4088, USD: 900 } },
     });
     expect(dispatched).toContainEqual({ type: 'EXCHANGE_SUCCESS' });
@@ -34,9 +35,9 @@ describe('exchangeSaga saga', () => {
   });
 
   test('should throw error if currencies from and to same', async () => {
-    SelectorsExchange.pocketToCurrencySelector.mockImplementation(() => 'USD');
+    mocked(SelectorsExchange.pocketToCurrencySelector).mockImplementation(() => 'USD');
 
-    const { dispatched } = await global.recordSaga(exchangeSaga);
+    const { dispatched } = await recordSaga(exchangeSaga);
 
     expect(dispatched).toContainEqual({
       type: 'EXCHANGE_FAILURE',

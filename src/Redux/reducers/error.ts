@@ -3,7 +3,7 @@ import { PayloadAction } from '@reduxjs/toolkit';
 
 type ErrorState = {[id: string]: string}
 
-export default function loadingReducer(state = {}, action: PayloadAction<any>): ErrorState {
+export default (state = {}, action: PayloadAction<any>): ErrorState => {
   const { type, payload } = action;
   const matches = /(.*)_(REQUEST|FAILURE)/.exec(type);
 
@@ -12,6 +12,6 @@ export default function loadingReducer(state = {}, action: PayloadAction<any>): 
   const [, requestName, requestState] = matches;
   return {
     ...state,
-    [requestName]: requestState === 'FAILURE' ? payload && payload.error && payload.error.message : '',
+    [requestName]: requestState === 'FAILURE' ? payload && payload.error : '',
   };
-}
+};

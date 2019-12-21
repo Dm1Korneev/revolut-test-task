@@ -3,7 +3,7 @@ import { pockets } from './dummyData';
 
 type parseJSONInterface = {
   response: Response;
-  result: Record<string, any>;
+  result: object;
 }
 
 function parseJSON(response: Response): Promise<parseJSONInterface> {

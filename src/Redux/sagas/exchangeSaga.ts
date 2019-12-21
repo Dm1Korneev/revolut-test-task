@@ -36,6 +36,6 @@ export default function* exchangeSaga(): SagaIterator {
       put(getSuccessAction(EXCHANGE)()),
     ]);
   } catch (error) {
-    yield put(getFailureAction(EXCHANGE)({ error }));
+    yield put(getFailureAction<object>(EXCHANGE)({ error }));
   }
 }

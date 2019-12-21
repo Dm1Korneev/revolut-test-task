@@ -1,13 +1,15 @@
+import { mocked } from 'ts-jest/utils';
 import dropExchangeValuesSaga from 'Redux/sagas/dropExchangeValuesSaga';
 
-jest.mock('Redux/actions', () => ({
-  dropExchangeValues: (payload) => ({ action: 'dropExchangeValues', payload }),
-}));
+import * as ReduxActions from 'Redux/actions';
+
+jest.mock('Redux/actions');
+mocked(ReduxActions.dropExchangeValues).mockImplementation((payload) => ({ type: 'DROP_EXCHANGE_VALUES', payload }));
 
 describe('changeWriteOffValueSaga saga', () => {
   test('should call dropExchangeValues action', async () => {
-    const { dispatched } = await global.recordSaga(dropExchangeValuesSaga);
+    const { dispatched } = await recordSaga(dropExchangeValuesSaga);
 
-    expect(dispatched).toContainEqual({ action: 'dropExchangeValues' });
+    expect(dispatched).toContainEqual({ type: 'DROP_EXCHANGE_VALUES', payload: undefined });
   });
 });

@@ -6,12 +6,12 @@ import * as changeReceiveValueSaga from 'Redux/sagas/changeReceiveValueSaga';
 import * as exchangeSaga from 'Redux/sagas/exchangeSaga';
 import * as dropExchangeValuesSaga from 'Redux/sagas/dropExchangeValuesSaga';
 
-const spyGetPocketsSaga = jest.spyOn(getPocketsSaga, 'default').mockImplementation(() => () => {});
-const spyGetRatesSaga = jest.spyOn(getRatesSaga, 'default').mockImplementation(() => () => {});
-const spyChangeWriteOffValueSaga = jest.spyOn(changeWriteOffValueSaga, 'default').mockImplementation(() => () => {});
-const spyChangeReceiveValueSaga = jest.spyOn(changeReceiveValueSaga, 'default').mockImplementation(() => () => {});
-const spyExchangeSaga = jest.spyOn(exchangeSaga, 'default').mockImplementation(() => () => {});
-const spyDropExchangeValuesSaga = jest.spyOn(dropExchangeValuesSaga, 'default').mockImplementation(() => () => {});
+const spyGetPocketsSaga = jest.spyOn(getPocketsSaga, 'default').mockImplementation((() => (): void => {}) as any);
+const spyGetRatesSaga = jest.spyOn(getRatesSaga, 'default').mockImplementation((() => (): void => {}) as any);
+const spyChangeWriteOffValueSaga = jest.spyOn(changeWriteOffValueSaga, 'default').mockImplementation((() => (): void => {}) as any);
+const spyChangeReceiveValueSaga = jest.spyOn(changeReceiveValueSaga, 'default').mockImplementation((() => (): void => {}) as any);
+const spyExchangeSaga = jest.spyOn(exchangeSaga, 'default').mockImplementation((() => (): void => {}) as any);
+const spyDropExchangeValuesSaga = jest.spyOn(dropExchangeValuesSaga, 'default').mockImplementation((() => (): void => {}) as any);
 
 describe('Root saga', () => {
   afterEach(() => {
@@ -24,7 +24,7 @@ describe('Root saga', () => {
   });
 
   test('should take GET_POCKETS_REQUEST action', async () => {
-    const { emit } = await global.recordSaga(rootSaga);
+    const { emit } = await recordSaga(rootSaga);
     emit({
       type: 'GET_POCKETS_REQUEST',
     });
@@ -33,7 +33,7 @@ describe('Root saga', () => {
   });
 
   test('should take GET_RATES_REQUEST action', async () => {
-    const { emit } = await global.recordSaga(rootSaga);
+    const { emit } = await recordSaga(rootSaga);
     emit({
       type: 'GET_RATES_REQUEST',
     });
@@ -42,7 +42,7 @@ describe('Root saga', () => {
   });
 
   test('should take CHANGE_WRITE_OFF_VALUE action', async () => {
-    const { emit } = await global.recordSaga(rootSaga);
+    const { emit } = await recordSaga(rootSaga);
     emit({
       type: 'CHANGE_WRITE_OFF_VALUE',
     });
@@ -51,7 +51,7 @@ describe('Root saga', () => {
   });
 
   test('should take CHANGE_RECEIVE_VALUE action', async () => {
-    const { emit } = await global.recordSaga(rootSaga);
+    const { emit } = await recordSaga(rootSaga);
     emit({
       type: 'CHANGE_RECEIVE_VALUE',
     });
@@ -60,7 +60,7 @@ describe('Root saga', () => {
   });
 
   test('should take EXCHANGE_REQUEST action', async () => {
-    const { emit } = await global.recordSaga(rootSaga);
+    const { emit } = await recordSaga(rootSaga);
     emit({
       type: 'EXCHANGE_REQUEST',
     });
@@ -69,7 +69,7 @@ describe('Root saga', () => {
   });
 
   test('should take EXCHANGE_SUCCESS action', async () => {
-    const { emit } = await global.recordSaga(rootSaga);
+    const { emit } = await recordSaga(rootSaga);
     emit({
       type: 'EXCHANGE_SUCCESS',
     });
@@ -78,7 +78,7 @@ describe('Root saga', () => {
   });
 
   test('should take SET_POCKET_FROM action', async () => {
-    const { emit } = await global.recordSaga(rootSaga);
+    const { emit } = await recordSaga(rootSaga);
     emit({
       type: 'SET_POCKET_FROM',
     });
@@ -87,7 +87,7 @@ describe('Root saga', () => {
   });
 
   test('should take SET_POCKET_TO action', async () => {
-    const { emit } = await global.recordSaga(rootSaga);
+    const { emit } = await recordSaga(rootSaga);
     emit({
       type: 'SET_POCKET_TO',
     });
@@ -96,7 +96,7 @@ describe('Root saga', () => {
   });
 
   test('should take CHANGE_POCKETS action', async () => {
-    const { emit } = await global.recordSaga(rootSaga);
+    const { emit } = await recordSaga(rootSaga);
     emit({
       type: 'CHANGE_POCKETS',
     });

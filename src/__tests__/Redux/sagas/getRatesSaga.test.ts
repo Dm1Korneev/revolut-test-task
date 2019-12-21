@@ -1,13 +1,14 @@
+import { mocked } from 'ts-jest/utils';
 import getRatesSaga from 'Redux/sagas/getRatesSaga';
 
 import * as APIRequests from 'API/requests';
 import * as ReduxActions from 'Redux/actions';
 
 jest.mock('API/requests');
-APIRequests.getRates.mockImplementation(() => 'getRates');
+mocked(APIRequests.getRates).mockImplementation(() => ({ getRates: 'getRates' }));
 
 jest.mock('Redux/actions');
-const spySetRates = jest.spyOn(ReduxActions, 'setRates').mockImplementation((payload) => ({ action: 'setRates', payload }));
+const spySetRates = jest.spyOn(ReduxActions, 'setRates').mockImplementation((payload) => ({ type: 'setRates', payload }));
 
 describe('getRatesSaga saga', () => {
   afterEach(() => {
@@ -15,19 +16,19 @@ describe('getRatesSaga saga', () => {
   });
 
   test('should call setRates and GET_RATES_SUCCESS actions', async () => {
-    const { dispatched } = await global.recordSaga(getRatesSaga);
+    const { dispatched } = await recordSaga(getRatesSaga);
 
-    expect(dispatched).toContainEqual({ action: 'setRates', payload: { rates: 'getRates' } });
-    expect(dispatched).toContainEqual({ type: 'GET_RATES_SUCCESS', payload: { rates: 'getRates' } });
+    expect(dispatched).toContainEqual({ type: 'setRates', payload: { rates: { getRates: 'getRates' } } });
+    expect(dispatched).toContainEqual({ type: 'GET_RATES_SUCCESS', payload: { rates: { getRates: 'getRates' } } });
     expect(spySetRates).toHaveBeenCalledTimes(1);
   });
 
   test('should call GET_RATES_FAILURE actions', async () => {
-    APIRequests.getRates.mockImplementationOnce(() => {
+    mocked(APIRequests.getRates).mockImplementationOnce(() => {
       throw 'setRatesError';
     });
 
-    const { dispatched } = await global.recordSaga(getRatesSaga);
+    const { dispatched } = await recordSaga(getRatesSaga);
 
     expect(dispatched).toContainEqual({ type: 'GET_RATES_FAILURE', payload: { error: 'setRatesError' } });
     expect(spySetRates).toHaveBeenCalledTimes(0);

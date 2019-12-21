@@ -25,7 +25,7 @@ describe('error reducer', () => {
     expect(
       reducer({}, {
         type: 'GET_RATES_FAILURE',
-        payload: { error: { message: 'TEST_MESSAGE' } },
+        payload: { error: 'TEST_MESSAGE' },
       }),
     ).toStrictEqual(
       { GET_RATES: 'TEST_MESSAGE' },

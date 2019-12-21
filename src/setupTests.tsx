@@ -20,9 +20,9 @@ myGlobal.mockComponent = (componentName: string) => (props: any): JSX.Element =>
   return (<div data-originalcomponent={componentName} {...mockProps}>{props.children}</div>);
 };
 
-type Dispatched = Array<PayloadAction>;
-type Emit = (action: PayloadAction) => void;
-myGlobal.recordSaga = async (saga: Saga, initialAction: PayloadAction): Promise<{dispatched: Dispatched; emit: Emit}> => {
+type Dispatched = Array<PayloadAction<any>>;
+type Emit = (action: PayloadAction<any>) => void;
+myGlobal.recordSaga = async (saga: Saga, initialAction?: PayloadAction<any>): Promise<{dispatched: Dispatched; emit: Emit}> => {
   const dispatched: Dispatched = [];
   const channel = stdChannel();
   const emitter = new EventEmitter();
@@ -30,7 +30,7 @@ myGlobal.recordSaga = async (saga: Saga, initialAction: PayloadAction): Promise<
     channel.put(action);
   });
   await runSaga({
-    dispatch: (action: PayloadAction): void => {
+    dispatch: (action: PayloadAction<any>): void => {
       dispatched.push(action);
     },
     channel,
@@ -39,7 +39,7 @@ myGlobal.recordSaga = async (saga: Saga, initialAction: PayloadAction): Promise<
   saga,
   initialAction).result;
 
-  const emit = (action: PayloadAction): void => {
+  const emit = (action: PayloadAction<any>): void => {
     emitter.emit('event', action);
   };
 

@@ -1,7 +1,7 @@
 import Container from 'Components/PocketFrom';
 
 jest.mock('Components/PocketFrom/PocketFrom', () => 'PocketFromComponent');
-jest.mock('Components/commonHoc', () => (...args) => args);
+jest.mock('Components/commonHoc', () => (...args: Array<any>): Array<any> => args);
 jest.mock('Selectors/exchange', () => ({
   pocketFromCurrencySelector: (): string => 'pocketFromCurrencySelector',
   pocketFromValueSelector: (): string => 'pocketFromValueSelector',
@@ -19,7 +19,7 @@ describe('PocketFrom container', () => {
   test('container get current data from store', () => {
     const props = {};
 
-    const [componentName, { mapStateToProps, mapDispatchToProps }] = Container;
+    const [componentName, { mapStateToProps, mapDispatchToProps }] = Container as any;
     expect(componentName).toBe('PocketFromComponent');
     expect(mapStateToProps({}, props)).toStrictEqual({
       currency: 'pocketFromCurrencySelector',

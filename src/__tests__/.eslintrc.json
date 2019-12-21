@@ -10,6 +10,7 @@
   "rules": {
     "global-require": "off",
     "no-throw-literal": "off",
-    "@typescript-eslint/no-empty-function": "off"
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }

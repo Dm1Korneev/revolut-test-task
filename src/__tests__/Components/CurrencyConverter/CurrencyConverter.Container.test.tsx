@@ -15,7 +15,7 @@ describe('CurrencyConverter container', () => {
   test('container get current data from store', () => {
     const props = {};
 
-    const [componentName, { mapStateToProps, mapDispatchToProps }] = Container;
+    const [componentName, { mapStateToProps, mapDispatchToProps }] = Container as any;
     expect(componentName).toBe('CurrencyConverterComponent');
     expect(mapStateToProps({}, props)).toStrictEqual({
       isBusy: true,

@@ -1,7 +1,7 @@
 import Container from 'Components/ExchangeButton';
 
 jest.mock('Components/ExchangeButton/ExchangeButton', () => 'ExchangeButtonComponent');
-jest.mock('Components/commonHoc', () => (...args) => args);
+jest.mock('Components/commonHoc', () => (...args: Array<any>): Array<any> => args);
 jest.mock('Redux/actions', () => ({
   exchange: 'exchange',
 }));
@@ -18,7 +18,7 @@ describe('ExchangeButton container', () => {
   test('container get current data from store', () => {
     const props = {};
 
-    const [componentName, { mapStateToProps, mapDispatchToProps }] = Container;
+    const [componentName, { mapStateToProps, mapDispatchToProps }] = Container as any;
     expect(componentName).toBe('ExchangeButtonComponent');
     expect(mapStateToProps({}, props)).toStrictEqual({
       isActive: true,
