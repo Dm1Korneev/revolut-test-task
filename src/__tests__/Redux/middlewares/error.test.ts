@@ -1,16 +1,16 @@
 import errorMiddleware from 'Redux/middlewares/error';
-import { Action } from 'redux-actions';
+import { PayloadAction } from '@reduxjs/toolkit';
 
 describe('Error middleware', () => {
   beforeEach(() => jest.clearAllMocks());
 
   type CreateType = {
     next: jest.Mock;
-    invoke: (action: Action<any>) => any;
+    invoke: (action: PayloadAction<any>) => any;
   }
   const create = (): CreateType => {
     const next = jest.fn();
-    const invoke = (action: Action<any>): any => errorMiddleware()(next)(action);
+    const invoke = (action: PayloadAction<any>): any => errorMiddleware()(next)(action);
 
     return { next, invoke };
   };
