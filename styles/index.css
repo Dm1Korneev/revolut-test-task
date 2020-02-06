@@ -1,0 +1,96 @@
+
+@font-face {
+  font-family: Roboto;
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/Roboto.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Futura New';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Futura New'),
+    url('../fonts/FuturaNewBook.woff2') format('woff2');
+  unicode-range: U+000-5FF; /* Latin glyphs */ 
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+body {
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+html, body {
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  font-family: Roboto, -apple-system, "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+article > * + * {
+  margin-top: 1em;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+button {
+  border: none;
+}
