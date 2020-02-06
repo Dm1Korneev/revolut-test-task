@@ -11,6 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
         CI: true
+        REACT_APP_CURRENCIES_RATE_API_ID: ${{ secrets.REACT_APP_CURRENCIES_RATE_API_ID }}
     steps:
     - uses: actions/checkout@v1
     - name: 'Use Node.js ${{ matrix.node }}'
