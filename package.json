@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/Dm1Korneev/revolut-test-task.git"
   },
-  "homepage": ".",
+  "homepage": "https://revolut-test-task.dmitriykorneev.com",
   "dependencies": {
     "@reduxjs/toolkit": "^1.1.0",
     "@testing-library/jest-dom": "^4.2.4",
@@ -34,12 +34,15 @@
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-jest": "^23.1.1",
     "eslint-plugin-react": "^7.17.0",
+    "gh-pages": "^2.2.0",
     "source-map-explorer": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "deploy": "gh-pages -d build",
+    "predeploy": "yarn build",
     "test-coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
