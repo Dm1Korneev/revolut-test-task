@@ -3,7 +3,7 @@ name: 'Test'
 on: [pull_request]
 
 jobs:
-  build:
+  test:
     strategy:
       matrix:
         node: [12.x]
