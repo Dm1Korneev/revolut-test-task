@@ -21,10 +21,6 @@ jest.mock('Redux/reducers', () => ({
   default: jest.fn(),
 }));
 
-jest.mock('redux-devtools-extension', () => ({
-  composeWithDevTools: jest.fn(),
-}));
-
 jest.mock('Redux/sagas', () => ({ SAGA: 'SAGA' }));
 
 describe('Store', () => {
