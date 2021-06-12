@@ -11,19 +11,20 @@ export const Container = styled.div`
               0px 1px 3px 0px rgba(0,0,0,0.12);
 `;
 
-const Block = styled.div`
-  display: flex;
+export const BlockFrom = styled.div`
+display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-`;
-
-export const BlockFrom = styled(Block)`
   background-color: rgb(255, 255, 255);
   position: relative;
 `;
 
-export const BlockTo = styled(Block)`
+export const BlockTo = styled.div`
+display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
   background-color: rgb(243, 243, 243);
 `;
